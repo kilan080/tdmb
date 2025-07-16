@@ -1,0 +1,89 @@
+.trends-section {
+  margin-top: 30px;
+}
+
+.trends-header {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.trends-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    padding-left: 40px;
+}
+
+.trends-tabs {
+  display: flex;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+}
+
+.trends-tab {
+  padding: 8px 16px;
+  background: white;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.trends-tab.active {
+  background: #032541;
+  color: #1ed5a9;;
+}
+
+.trends-tab:not(:last-child) {
+  border-right: 1px solid #ccc;
+}
+
+.trends-content {
+  width: 100%;
+}
+
+.trends-movies {
+  overflow-x: auto;
+  padding: 0 40px;
+}
+
+.trends-movies-inner {
+  display: flex;
+  gap: 16px;
+  width: fit-content;
+}
+/*  */
+.video-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.video-modal-content {
+  position: relative;
+  width: 80%;
+  max-width: 900px;
+}
+
+.video-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  line-height: 1;
+}

@@ -1,0 +1,127 @@
+.free_watch {
+  margin: 40px auto;
+  max-width: 1300px;
+  padding: 0 20px;
+  font-family: sans-serif;
+}
+
+.free-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+.free-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.free-tabs {
+  display: inline-flex;
+  background: #f1f1f1;
+  border-radius: 50px;
+  padding: 4px;
+}
+
+.free-tabs button {
+  border: none;
+  background: transparent;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+.free-tabs button.active {
+  background: #032541;
+  color: #1ed5a9;
+}
+
+.free-list {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scroll-behavior: smooth;
+}
+
+.free-list::-webkit-scrollbar {
+  height: 8px;
+}
+
+.free-list::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.free-card {
+    width: 160px;
+    flex: 0 0 auto;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+.free-card img {
+    display: block;
+    width: 100%;
+}
+
+.free-card:hover {
+  transform: scale(1.05);
+}
+
+.movies-image-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.movies-image-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.vote-badge {
+  position: absolute;
+  bottom: -10px;
+  left: 10px;
+  background: #032541;
+  color: #fff;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: bold;
+  border: 2px solid #fff;
+}
+
+.movies-info {
+  padding: 10px 5px;
+  text-align: center;
+}
+
+.movies-title {
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+  margin: 5px 0;
+  cursor: pointer;
+}
+.movies-title:hover {
+    color: #1ed5a9;
+}
+
+.movies-subtitle {
+  font-size: 12px;
+  color: #888;
+}

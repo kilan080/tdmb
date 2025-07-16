@@ -1,0 +1,67 @@
+.movie-card {
+  display: flex;
+  flex-wrap: wrap;
+  width: 200px;
+  height: auto;
+  margin: 10px;
+  font-family: sans-serif;
+  color: #333;
+  background-color: #fff;
+
+  flex: 0 0 auto;
+  /* width: 150px; */
+  scroll-snap-align: start;
+
+}
+
+.poster-container {
+  position: relative;
+  border-radius: 8px;
+  /* overflow: hidden; */
+}
+.poster-container img {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+}
+.poster {
+  width: 100%;
+  display: block;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.poster-container:hover .poster {
+  transform: scale(1.05);
+}
+
+.vote-badge {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  background-color: #032541;
+  color: #21d07a;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.title {
+  font-size: 14px;
+  margin: 6px 0 2px;
+}
+.title:hover {
+  color: #21d07a;
+  cursor: pointer;
+}
+
+.release-date {
+  font-size: 12px;
+  color: #999;
+  margin: 0;
+}

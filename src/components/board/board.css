@@ -1,0 +1,149 @@
+.board {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: #fff;
+}
+
+.board-header {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.board-header h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #000;
+    margin: 0 0 1rem 0;
+}
+
+.twos {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.twos p {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 1rem;
+    color: #333;
+    margin: 0;
+}
+
+.twos p::before {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.dot-all::before {
+    background: #01d277;
+}
+
+.dot-week::before {
+    background: linear-gradient(to right, #ff9900, #ff0055);
+}
+
+.content {
+    overflow-x: auto;
+}
+
+.leaderboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.leaderboard li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.avatar {
+    flex-shrink: 0;
+}
+
+.avatar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.data {
+     flex: 1;
+}
+
+.data h3 {
+    margin: 0 0 0.5rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #000;
+}
+.data h3:hover {
+    color: #78e9b8;
+}
+
+.data a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.meter-all,
+.meter-this-week {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 6px;
+}
+
+.meter-all .guage {
+    height: 4px;
+    border-radius: 4px;
+    background-color: #01d277;
+    transition: width 0.6s ease;
+}
+
+.meter-this-week .guage {
+    height: 8px;
+    border-radius: 4px;
+    background: linear-gradient(to right, #ff9900, #ff0055);
+    transition: width 0.6s ease;
+}
+
+.meter-all .guage,
+.meter-this-week .guage {
+    min-width: 40px;
+    width: 0;
+}
+
+.meter-all h4,
+.meter-this-week h4 {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #333;
+}
+
+
+
+
+
+@media (max-width: 600px) {
+    .leaderboard {
+        grid-template-columns: 1fr;
+  }
+}

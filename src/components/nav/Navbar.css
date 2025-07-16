@@ -1,0 +1,72 @@
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #333;
+  padding: 10px 40px;
+  color: #fff;
+  position: relative;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 20px;
+  font-weight: 500;
+}
+
+.navbar a:hover {
+  text-decoration: none;
+  color: #444;
+}
+
+.logo img {
+  height: 35px;
+}
+
+/* Hamburger button (hidden on desktop) */
+.navbar_toggle {
+    display: none;
+    font-size: 28px;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+.navbar_links {
+    display: flex;
+}
+
+
+@media  (max-width: 600px) {
+    .navbar_toggle {
+        display: block;
+    }
+
+    .navbar_links {
+        display: none;
+        flex-direction: column;
+        background: #444;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        width: 200px;
+        border-radius: 5px;
+        padding: 10px 0;
+    }
+
+    .navbar_links a {
+        margin: 10px 20px;
+    }
+
+    .navbar_links.open {
+        display: flex;
+    }
+    .logo img  {
+        font-size:  30px;
+        width: 120px;
+    }
+}

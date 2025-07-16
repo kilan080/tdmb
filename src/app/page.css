@@ -1,0 +1,6 @@
+.page {
+  grid-template-rows: 80px auto;
+}
+html, body {
+  overflow-x: hidden;
+}
