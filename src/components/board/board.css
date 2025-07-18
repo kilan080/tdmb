@@ -118,7 +118,7 @@
 }
 
 .meter-this-week .guage {
-    height: 8px;
+    height: 5px;
     border-radius: 4px;
     background: linear-gradient(to right, #ff9900, #ff0055);
     transition: width 0.6s ease;
