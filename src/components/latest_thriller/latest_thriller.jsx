@@ -1,4 +1,4 @@
-// Opra.jsx
+
 import { useState, useEffect } from "react";
 import "./latest_thriller.css";
 
@@ -10,7 +10,7 @@ const tabs = [
   { value: "inTheaters",  path: "https://api.themoviedb.org/3/movie/upcoming" },
 ];
 
-const token = "YOUR_TMDB_BEARER_TOKEN_HERE";
+const token = "eyJhbGciOiJIUzI1NiJ9eyJhdWQiOiI5MjQ0YzkzNjk3MzcyYzk5ZDY5YjU5MjYyY2I2NjhkMCIsIm5iZiI6MTc1MTI5Mjg2NC42NTkwMDAyLCJzdWIiOiI2ODYyOWJjMGMwN2QyZTVjZjAzMDQ4MzQiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0ZosBHSGmiHBXFEgyml673qLAEg5JbfUXfaiCDZxvjuk";
 
 export default function Opra() {
   const [path, setPath]                   = useState(tabs[0].path);
@@ -19,13 +19,13 @@ export default function Opra() {
   const [loading, setLoading]             = useState(false);
   const [selectedVideoUrl, setSelectedVideoUrl] = useState(null);
 
-  // Switch tabs
+
   const handleSetPathname = (value, newPath) => {
     setActiveTab(value);
     setPath(newPath);
   };
 
-  // Fetch movies + their first YouTube trailer (embed URL)
+  
   useEffect(() => {
     if (!path) return;
     setLoading(true);

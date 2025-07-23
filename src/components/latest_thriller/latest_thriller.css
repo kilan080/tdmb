@@ -194,3 +194,72 @@
   font-size: 14px;
   color: #ccc;
 }
+
+
+@media (max-width: 600px) {
+  .opera-container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .opera-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .opera-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    width: 100%;
+  }
+
+  .opera-tab-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .opera-movie-list {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+    padding: 0 10px;
+  }
+
+  .opera-movie-card {
+    flex: 0 0 160px;
+    min-width: 160px;
+    max-width: 160px;
+    scroll-snap-align: start;
+  }
+
+  .opera-movie-image-container img {
+    height: 100px;
+  }
+
+  .opera-play-icon {
+    font-size: 18px;
+    top: 8px;
+    right: 8px;
+    padding: 5px 9px;
+  }
+
+  .opera-movie-info {
+    padding: 8px;
+  }
+
+  .opera-movie-title {
+    font-size: 14px;
+  }
+
+  .opera-movie-subtitle {
+    font-size: 12px;
+  }
+
+  .opera-movie-list {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+}

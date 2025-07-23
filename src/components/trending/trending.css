@@ -87,3 +87,9 @@
   cursor: pointer;
   line-height: 1;
 }
+@media screen and (max-width: 768px) {
+  .trends-tabs {
+    display: flex;
+    flex-direction: column;
+  }
+}

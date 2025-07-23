@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 .page {
   grid-template-rows: 80px auto;
 }
 html, body {
   overflow-x: hidden;
+  font-family: "Source Sans Pro", Arial, sans-serif;
 }

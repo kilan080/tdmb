@@ -1,3 +1,23 @@
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/* Reset margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+  margin: 0;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
 .board {
   max-width: 1200px;
   margin: 0 auto;
@@ -142,8 +162,12 @@
 
 
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
     .leaderboard {
-        grid-template-columns: 1fr;
-  }
+        /* grid-template-columns: 1fr; */
+        display: block;
+    }
+    .data {
+        margin: 0;
+    }
 }

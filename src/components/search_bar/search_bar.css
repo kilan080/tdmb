@@ -16,7 +16,7 @@
     font-size: 3em;
     font-weight: 700;
     line-height: 1;
-    /* padding: 0 40px; */
+    padding: 20px 0px;
 }
 .search_bar h2 {
     font-size: 2em;
@@ -104,3 +104,21 @@ input {
 
 
 
+@media screen and (max-width: 768px) {
+    
+}
+
+
+
+@media screen and (max-width: 600px) {
+    .search_bar h1 {
+        font-size: 3em;
+        font-weight: 700;
+        line-height: 1;
+    }
+    .search_bar h3 {
+        font-size: 2em;
+        font-weight: 600;
+        margin: 0;
+    }
+}
