@@ -9,6 +9,10 @@
   position: relative;
   height: 64px;
 }
+.navbar_left {
+  display: flex;
+  
+}
 .logo {
   display: flex;
   flex-direction: row;
@@ -62,7 +66,7 @@
   color: #032541;
 }
 
-/* Hamburger button (hidden on desktop) */
+/* Hamburger button */
 .navbar_toggle {
     display: none;
     font-size: 28px;

@@ -1,10 +1,10 @@
 'use client'
+import Link from 'next/link'
 import React, { useState } from 'react';
 import './Navbar.css';
 import { IoPersonSharp } from "react-icons/io5";
 import { FaPlus } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
-
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,29 +15,31 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <a href='/' className="logo">
-        <img className='head1' src="/movie_logo.svg" alt="Logo" />
+      <div className="navbar_left">
+        <Link href='/' className="logo">
+          <img className='head1' src="/movie_logo.svg" alt="Logo" />
+        </Link>
         <IoPersonSharp className='head2' />
-        <div className={`navbar_links ${isOpen ? "open" : ""}`}>
-          <a href="/movies">Movies</a>
-          <a href="/tvShows">TV Shows</a>
-          <a href="/people">People</a>
-          <a href="/more">More</a>
+        {/* Navigation Links */}
+        <div className={`navbar_links ${!isOpen ? "" : "open"}`}>
+          <Link href="/movies">Movies</Link>
+          <Link href="/tvShows">TV Shows</Link>
+          <Link href="/people">People</Link>
+          <Link href="/more">More</Link>
           <div className="links-2">
-            <a href="">Contribution Bible</a>
-            <a href="">Discussions</a>
-            <a href="">Leaderboard</a>
-            <a href="">API</a>
-            <a href="">Support</a>
-            <a href="">About</a>
-            <a href="">Login</a>
+            <Link href="">Contribution Bible</Link>
+            <Link href="">Discussions</Link>
+            <Link href="">Leaderboard</Link>
+            <Link href="">API</Link>
+            <Link href="">Support</Link>
+            <Link href="">About</Link>
+            <Link href="">Login</Link>
           </div>
         </div>
+      </div>
 
-      </a>
 
-
-      <img className='middle' src='/movie-logo.svg' style={{ width: '40px'}} />
+      <img className='middle' src='/movie-logo.svg' style={{ width: '40px' }} />
 
       <button
         className="navbar_toggle"
@@ -46,15 +48,14 @@ const Navbar = () => {
       >
         ☰
       </button>
+
       <div className="others">
-        <a href=""><FaPlus /></a>
-        <a className='en' href="">EN</a>
-        <a href="">Login</a>
-        <a href="">Join TMDB</a>
-        <a className='glas' href=""><FaSearch style={{ color: 'blue' }} /></a>
+        <Link href=""><FaPlus /></Link>
+        <Link className='en' href="">EN</Link>
+        <Link href="">Login</Link>
+        <Link href="">Join TMDB</Link>
+        <Link className='glas' href=""><FaSearch style={{ color: 'blue' }} /></Link>
       </div>
-
-
     </nav>
   );
 };
