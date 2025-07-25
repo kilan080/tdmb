@@ -4,14 +4,14 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Source Sans Pro", Arial, sans-serif;
-      font-stretch: 100%;
+    font-stretch: 100%;
     font-style: normal;
 }
 
 body {
   /* background-color: #101010; */
   color: #fff;
-   
+   -webkit-font-smoothing: antialiased;
 }
 /* .page {
   display: grid;

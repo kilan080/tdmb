@@ -1,0 +1,95 @@
+.main-people {
+  width: 100%;
+  padding: 20px 30px;
+  
+}
+.people-header {
+    /* margin-top: 64px; */
+}
+
+.ple {
+  color: #000000;
+  font-size: 25.5px;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.people-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 40px;
+  margin-top: 30px;
+  color: #000;
+}
+
+
+.people-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  
+  overflow: hidden;
+}
+
+
+.image-image-container {
+  width: 100%;
+  aspect-ratio: 3/3;
+  overflow: hidden;
+}
+
+.image-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-radius: 8px;
+}
+
+
+.person_info {
+  padding: 8px 10px;
+  background-color: #fff;
+  height: auto;
+}
+
+.person-name {
+  width: 100%;
+  line-height: 1.2em;
+  font-size: 1em;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 4px;
+  cursor: pointer;
+}
+
+.person-movies {
+  font-size: 0.9em;
+  color: #00000099;
+  line-height: 1.3em;
+  max-height: 2.6em; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 400;
+}
+
+
+@media (max-width: 768px) {
+  .people-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .ple {
+    font-size: 17.6px;
+    margin: 0px 0px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .people-list {
+    grid-template-columns: 1fr;
+  }
+}

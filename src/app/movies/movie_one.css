@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+    font-family: "Source Sans Pro", Arial, sans-serif;
+}
 .pop-header {
     padding: 30px 40px;
 }
@@ -101,10 +105,48 @@
     color: #24cba4;
     cursor: pointer;
 }
+.movie-detail {
+    display: none;
+    font-family: "Source Sans Pro", Arial, sans-serif;
+
+}
 
 
 .movie-date {
     font-size: 13px;
     color: rgba(0, 0, 0, 0.6);
     margin: 0;
+}
+
+@media screen and (max-width: 958px) {
+    .movie-list {
+        display: flex;
+        flex-direction: column;
+    }
+    .movie-card {
+        display: flex;
+        flex-direction: row;
+        height: 141px;
+        width: 100%
+    }
+    .movie-image-container {
+        height: 141px;
+        width: 94px;
+    }
+    .vote-badge {
+        display: none;
+    }
+    .movie_info {
+        height: 141px;
+        width: 100%;
+    }
+    .movie-detail {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 8px;
+        display: block;
+        color: #000000;
+        font-size: 14.4px;
+        font-family: "Source Sans Pro", Arial, sans-serif;
+    }
 }

@@ -9,7 +9,7 @@ export default function Page() {
 
   const [movies, setMovies] = useState([]);
 
-   useEffect(() => {
+    useEffect(() => {
       const fetchMovies = async () => {
         try {
           const res = await fetch(url, {
@@ -26,6 +26,33 @@ export default function Page() {
   
       fetchMovies();
     }, []);
+
+    // function useScreenWidth() {
+    //   const [width, setWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
+
+    //   useEffect(() => {
+    //     const handleResize = () => setWidth(window.innerWidth);
+    //     window.addEventListener('resize', handleResize);
+    //     return () => window.removeEventListener('resize', handleResize);
+    //   }, []);
+
+    //   return width;
+    // }
+
+    // const screenWidth = useScreenWidth();
+
+    // const overviewLength = screenWidth < 768 ? 100 : 300;
+    // const shortOverview = movies.overview?.slice(0, overviewLength);
+
+    function getFirstParagraph(description) {
+
+    const firstParagraph =
+      typeof description === 'string' ? description.split('\n\n')[0] || '' : '';
+
+      return firstParagraph.length > 100
+        ? firstParagraph.substring(0, 140) + '...'
+        : firstParagraph;
+    }
   
   return (
     <div className='main'>
@@ -44,8 +71,8 @@ export default function Page() {
                     imagePath
                       ? `https://image.tmdb.org/t/p/w500${imagePath}`
                       : "https://via.placeholder.com/500x750?text=No+Image"
-                  }
-                  alt={movie.title || movie.name || "Untitled"}
+                    }
+                    alt={movie.title || movie.name || "Untitled"}
                   />
                   {movie.vote_average && (
                   <span className="vote-badge">
@@ -55,8 +82,11 @@ export default function Page() {
                 </a>
               </div>
               <div className='movie_info'>
-                  <p className='movie-title'>{movie.title || movie.name}</p>
-                  <p className='movie-date'>{movie.release_date || movie.first_air_date}</p>
+                <p className='movie-title'>{movie.title || movie.name}</p>
+                <p className='movie-date'>{movie.release_date || movie.first_air_date}</p>
+                <p className='movie-detail'>{getFirstParagraph(movie.overview)}...</p>
+
+                {/* <p className='movie-detail'>{movie.overview?.slice(0, 300)}...</p> */}
               </div>
             </div>
           );
