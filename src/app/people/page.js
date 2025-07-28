@@ -28,7 +28,7 @@ export default function Page() {
   }, []);
 
   return (
-    <div className='main-people'>
+    <div className='main-peoples'>
       <div className='people-header'>
         <h2 className="ple">Popular People</h2>
       </div>
