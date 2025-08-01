@@ -1,0 +1,148 @@
+* {
+    box-sizing: border-box;
+    font-family: "Source Sans Pro", Arial, sans-serif;
+}
+.pop-tv {
+    padding: 30px 40px;
+}
+
+.poptv {
+    width: 100%;
+    color: #000000;
+    height: 32px;
+    font-weight: 600;
+    font-size: 1.6em;
+}
+
+
+.tv-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(192px, 1fr));
+    gap: 24px;
+    padding: 20px 40px;
+}
+
+
+.tv-card {
+    width: 192px;
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    border: 1px solid #e3e3e3;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    position: relative;
+    z-index: 1;
+    overflow: visible;
+}
+
+
+.tv-image-container {
+    position: relative;
+    width: 100%;
+    height: 291px;
+    overflow: hidden;
+}
+
+.tv-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+.tv-image-container:hover {
+    cursor: pointer;
+}
+
+
+.vot-badge-tv {
+    position: absolute;
+    bottom: -18px;
+    bottom: -12px;
+    left: 10px;
+    width: 36px;
+    height: 36px;
+    background-color: #081c22;
+    color: #21d07a;
+    font-weight: 700;
+    font-size: 13px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #1f1f1f;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+}
+
+
+
+.tv_info {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+    /* align-items: center; */
+    /* text-align: center; */
+}
+
+
+.tv-title {
+    font-weight: bold;
+    font-size: 14px;
+    margin: 4px 0;
+    color: #333;
+}
+
+.tv-title:hover {
+    color: rgb(22, 174, 224);
+    cursor: pointer;
+}
+.tv-detail {
+    display: none;
+    font-family: "Source Sans Pro", Arial, sans-serif;
+
+}
+
+
+.tv-date {
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.6);
+    margin: 0;
+}
+
+@media screen and (max-width: 958px) {
+    .tv-list {
+        display: flex;
+        flex-direction: column;
+    }
+    .tv-card {
+        display: flex;
+        flex-direction: row;
+        height: 141px;
+        width: 100%
+    }
+    .tv-image-container {
+        height: 141px;
+        width: 94px;
+    }
+    .vot-badge-tv {
+        display: none;
+    }
+    .tv_info {
+        height: 141px;
+        width: 100%;
+    }
+    .tv-detail {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 8px;
+        display: block;
+        color: #000000;
+        font-size: 14.4px;
+        font-family: "Source Sans Pro", Arial, sans-serif;
+        /* overflow: hidden; */
+    }
+}
