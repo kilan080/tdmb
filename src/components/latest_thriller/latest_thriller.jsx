@@ -5,9 +5,9 @@ import "./latest_thriller.css";
 const tabs = [
   { value: "popular",     path: "https://api.themoviedb.org/3/tv/airing_today" },
   { value: "streaming",   path: "https://api.themoviedb.org/3/movie/now_playing" },
-  { value: "onTV",        path: "https://api.themoviedb.org/3/trending/tv/day" },
+  { value: "onTV",        path: "https://api.themoviedb.org/3/trending/movie/day" },
   { value: "forRent",     path: "https://api.themoviedb.org/3/movie/now_playing" },
-  { value: "inTheaters",  path: "https://api.themoviedb.org/3/movie/upcoming" },
+  { value: "inTheaters",  path: "https://api.themoviedb.org/3/trending/movie/day" },
 ];
 
 const token = "eyJhbGciOiJIUzI1NiJ9eyJhdWQiOiI5MjQ0YzkzNjk3MzcyYzk5ZDY5YjU5MjYyY2I2NjhkMCIsIm5iZiI6MTc1MTI5Mjg2NC42NTkwMDAyLCJzdWIiOiI2ODYyOWJjMGMwN2QyZTVjZjAzMDQ4MzQiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0ZosBHSGmiHBXFEgyml673qLAEg5JbfUXfaiCDZxvjuk";
