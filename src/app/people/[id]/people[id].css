@@ -1,0 +1,166 @@
+* {
+    font-family: "Source Sans Pro", Arial, sans-serif;
+    font-stretch: 100%;
+    font-style: normal;
+}
+
+.people-detail {
+    padding: 20px 40px;
+}
+
+.head-name {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.head-name img {
+    border-radius: 8px;
+    width: 300px;
+    height: auto;
+    object-fit: cover;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 20px;
+    flex: 1;
+    max-width: 900px;
+}
+
+.info h2 {
+    color: #000000;
+    font-size: 32.5px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.info h3 {
+    color: #000000;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.info p {
+    color: #000000;
+    font-size: 16px;
+    line-height: 22px;
+    margin-bottom: 10px;
+    overflow-wrap: break-word;
+}
+
+
+.known h3 {
+    color: #000000;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 20px 0 12px;
+}
+
+.known-mov {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding-bottom: 10px;
+}
+
+.known-mov::-webkit-scrollbar {
+    display: none;
+}
+
+.known-mg {
+    min-width: 150px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.known-mg img {
+    border-radius: 8px;
+    width: 150px;
+    height: auto;
+    object-fit: cover;
+}
+
+.known-mg p {
+    color: #000000;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 8px;
+}
+
+.known-mg p:hover {
+    color: rgb(118, 241, 241);
+    cursor: pointer;
+}
+.pers-info {
+    color: #000000;
+    font-size: 16px;
+    font-weight: 900;
+    margin-top: 20px;
+    font-family: "Source Sans Pro", Arial, sans-serif;
+}
+.pers-info p {
+    color: #000000;
+    font-weight: 400;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+.pers-info h5 {
+    color: #000000;
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 10px;
+}
+ul li {
+    color: #000000;
+    font-size: 12px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+    .head-name {
+        flex-direction: column;
+        align-items: center;
+    }
+    .sec {
+        display: flex;
+        /* flex-direction: row; */
+        gap: 30px;
+    }
+
+    .info {
+        padding-left: 0;
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .known-mg {
+        min-width: 120px;
+    }
+
+    .known-mg img {
+        width: 120px;
+    }
+}
+
+@media  (max-width: 400px) {
+    .sec {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+    }    
+} 

@@ -151,7 +151,7 @@ export default function Page() {
                             alt={movie.name || movie.title}
                             />
                             <div className="air-date-overlay">
-                            <IoCalendarSharp /> {movie.first_air_date || movie.release_date}
+                                <IoCalendarSharp /> {movie.first_air_date || movie.release_date}
                             </div>
                         </div>
                         <div className='two-rec'>

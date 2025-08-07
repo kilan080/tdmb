@@ -1,21 +1,22 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import tmdbApi, { config } from '@/service/service_2';
+import NextLink from 'next/link';
 import './people.css';
 
 export default function Page() {
    const [people, setPeople] = useState([]);
 
+   const fetchPeople = async () => {
+      try {
+         const res = await tmdbApi.get(`${config.subUrl.popularPeople}`);
+         setPeople(res.data.results || []);
+         console.log('popular people:', data.results);
+      } catch (error) {
+         console.error('error fetching people:', error);
+      }
+   };
    useEffect(() => {
-      const fetchPeople = async () => {
-         try {
-            const res = await tmdbApi.get(`${config.subUrl.popularPeople}`);
-            setPeople(res.data.results || []);
-            console.log('popular people:', data.results);
-         } catch (error) {
-            console.error('error fetching people:', error);
-         }
-      };
 
       fetchPeople();
    }, []);
@@ -32,9 +33,8 @@ export default function Page() {
                return (
                   <div className="people-card" key={person.id || index}>
                      <div className="image-image-container">
-                        <a
-                           href={`https://www.themoviedb.org/person/${person.id}`}
-                           target="_blank"
+                        <NextLink
+                           href={`/people/${person.id}`}
                            rel="noopener noreferrer"
                         >
                            <img
@@ -45,7 +45,7 @@ export default function Page() {
                               }
                               alt={person.name || 'Unnamed'}
                            />
-                        </a>
+                        </NextLink>
                      </div>
                      <div className="person_info">
                         <p className="person-name">{person.name}</p>
