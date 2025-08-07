@@ -3,13 +3,6 @@ import './join.css'
 // import { useNavigate } from 'react-router-dom'
 
 export default function Join () {
-    // function signUp ()  {
-    //     const navigate = useNavigate();
-
-    //     const goToSignUp = () => {
-    //     navigate("/signup");
-    //     };
-    // }
 
   return (
     <div className='join'>

@@ -7,6 +7,7 @@ export const config = {
       popularPeople: '/3/person/popular',
       movies: '/3/movie/popular',
       tvshows: '/3/discover/tv',
+      tv: '/3/tv',
       discoveryTv: '/3/discover/tv',
       airingToday: '/3/tv/airing_today',
       nowPlaying: '/3/movie/now_playing',

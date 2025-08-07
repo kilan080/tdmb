@@ -13,15 +13,15 @@ const tabs = [
    },
    {
       value: 'On TV',
-      path: '/3/trending/movie/day',
+      path: config.subUrl.trendingMovieDay,
    },
    {
       value: 'For Rent',
-      path: '/3/movie/now_playing',
+      path: config.subUrl.nowPlaying,
    },
    {
       value: 'In Theaters',
-      path: '/3/trending/movie/week',
+      path: config.subUrl.trendingMovieDay,
    },
 ];
 
