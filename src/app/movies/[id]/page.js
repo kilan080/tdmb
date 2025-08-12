@@ -4,27 +4,28 @@ import tmdbApi, { config } from '@/service/service_2';
 import { useParams } from 'next/navigation';
 import ReactPlayer from 'react-player';
 import Modal from 'react-modal';
-import { FaHeart } from 'react-icons/fa';
 import { IoInformationCircleOutline } from "react-icons/io5";
 import { IoIosMenu, IoIosPlay } from "react-icons/io";
 import { IoBookmarkOutline } from "react-icons/io5";
 import { IoCalendarSharp } from "react-icons/io5";
-import './tvshow[id].css';
+import { FaHeart } from "react-icons/fa";
+import './movies.css';
+
+Modal.setAppElement('body');
 
 export default function Page() {
     const { id } = useParams();
-    const [tvShowDetails, setTvShowDetails] = useState(null);
+    const [movieDetails, setMovieDetails] = useState([]);
     const [videoUrl, setVideoUrl] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [activeTab, setActiveTab] = useState('Most Popular');
 
-    const getTvShowDetails = async () => {
+    const getMovieDetails = async () => {
         try {
-            const res = await tmdbApi.get(`${config.subUrl.tvDetails}/${id}?append_to_response=credits,recommendations`);
-            setTvShowDetails(res.data);
-            console.log('TV Show Details:', res.data);
+            const res = await tmdbApi.get(`${config.subUrl.movieDetails}/${id}?append_to_response=credits,recommendations`);
+            setMovieDetails(res.data);
+            console.log('movie Details:', res.data);
         } catch (error) {
-        console.error('error fetching details ', error);
+            console.error('error fetching movie details', error);
         }
     }
     const fetchTrailer = async (id, type = 'movie') => {
@@ -62,99 +63,90 @@ export default function Page() {
         return `${hours}h ${minutes}m`;
     };
 
+    if (!movieDetails) return <p>Loading...</p>;
+
     useEffect(() => {
-        if (id) getTvShowDetails();
+        if (id) getMovieDetails();
     }, [id]);
 
-    if (!tvShowDetails) return <p>Loading...</p>;
 
   return (
     <div>
-      <div
-            className="img-back"
-            style={{
-                backgroundImage: tvShowDetails?.backdrop_path
-                ? `linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.3)), url(https://image.tmdb.org/t/p/original${tvShowDetails.backdrop_path})`
+      <div className="im-back" style={{
+                backgroundImage: movieDetails?.backdrop_path
+                ? `linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.3)), url(https://image.tmdb.org/t/p/original${movieDetails.backdrop_path})`
                 : 'none',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
-            }}
-            >
+                
+            }}>
             <img className='tv-show-backdrop'
-                src={`https://media.themoviedb.org/t/p/w300_and_h450_bestv2${tvShowDetails.poster_path || tvShowDetails.backdrop_path}`}
-                alt={tvShowDetails.name}
-                onClick={() => fetchTrailer(tvShowDetails.id, 'tv')} // Updated to use tvShowDetails
-                style={{ backgroundImage: tvShowDetails?.backdrop_path
-                    ? `url(https://image.tmdb.org/t/p/original${tvShowDetails.backdrop_path})`
+                src={`https://media.themoviedb.org/t/p/w300_and_h450_bestv2${movieDetails.poster_path || movieDetails.backdrop_path}`}
+                alt={movieDetails?.name || movieDetails?.title || ''}
+                onClick={() => fetchTrailer(movieDetails.id, 'movie')}
+                style={{ backgroundImage: movieDetails?.backdrop_path
+                    ? `url(https://image.tmdb.org/t/p/original${movieDetails.backdrop_path})`
                     : 'none',}}
             />
             <div className='tv-show-details'>
-                <h1>{tvShowDetails.name} ({tvShowDetails.first_air_date?.slice(0, 4)})</h1>
-                
+                <h1>{movieDetails?.title} ({movieDetails?.release_date?.slice(0, 4)})</h1>
+
                 <div className='under-details'>
                     <p className='facts'>TV-MA</p>
-                    <p className='genres'>{tvShowDetails.genres?.map(g => g.name).join(', ')}</p>
-                    {tvShowDetails.runtime && (
-                    <p className='runtime'>{minutesToHours(tvShowDetails.runtime)}</p>
+                    <p className='genres'>{movieDetails.genres?.map(g => g.name).join(', ')}</p>
+                    {movieDetails.runtime && (
+                    <p className='runtime'>{minutesToHours(movieDetails.runtime)}</p>
                     )}
                 </div>
 
                 <div className='user-vibe'>
-                        <div className="undo">
-                            {tvShowDetails.vote_average && (
-                            <span className='badge'>
-                                {Math.round(tvShowDetails.vote_average * 10)}%
-                            </span>
-                            )}
-                                
-
-                            <div className="emoji-set">
-                                {getEmojiSetByScore(tvShowDetails.vote_average * 10).map((emoji, index) => (
-                                    <span key={index} className="emoji" style={{ left: `${index * 14}px` }}>
-                                        {emoji}
-                                    </span>
-                                ))}
-                            </div>
+                    <div className="undo">
+                        {movieDetails.vote_average && (
+                        <span className='badge'>
+                            {Math.round(movieDetails.vote_average * 10)}%
+                        </span>
+                        )}
+                            
+                        <div className="emoji-set">
+                            {getEmojiSetByScore(movieDetails.vote_average * 10).map((emoji, index) => (
+                                <span key={index} className="emoji" style={{ left: `${index * 14}px` }}>
+                                    {emoji}
+                                </span>
+                            ))}
                         </div>
-                        
-                        <div className='vibe'>
-                            <h5>What's your <span className='und'>vibe</span>?<IoInformationCircleOutline /></h5>
-                        </div>
+                    </div>
+                    
+                    <div className='vibe'>
+                        <h5>What's your <span className='und'>vibe</span>?<IoInformationCircleOutline /></h5>
+                    </div>
                 </div>
-
                 <div className='menu-love-mark'>
                     <div className='all'><IoIosMenu /></div>
                     <div className='all'><FaHeart /></div>
                     <div className='all'><IoBookmarkOutline /></div>
-                    <button onClick={() => fetchTrailer(tvShowDetails.id, 'tv')} className='play-button'><IoIosPlay /> Play Trailer</button>
+                    <button onClick={() => fetchTrailer(movieDetails.id, 'movie')} className='play-button'><IoIosPlay /> Play Trailer</button>
                 </div>
 
-                <p className='tagline'>{tvShowDetails.tagline}</p>
+                <p className='tagline'>{movieDetails.tagline}</p>
 
                 <div className='overview-section'>
                     <h3>Overview</h3>
-                    <p>{tvShowDetails.overview}</p>
+                    <p>{movieDetails.overview}</p>
                 </div>
+
                 <div className='profile'>
-                    <a
-                        // href={
-                        // tvShowDetails.created_by?.[0]?.id
-                        //     ? `https://www.themoviedb.org/person/${tvShowDetails.created_by[0].id}`
-                        //     : '#'
-                        // }
-                    >
-                        <p className='character'>{tvShowDetails.created_by?.[0]?.name}</p>
-                    </a>
+                    <p className='character'>{movieDetails.created_by?.[0]?.name}</p>
                     <p>Creator</p>
                 </div>
+
             </div>
       </div>
-      <div className='series-info'>
+        <div className='series-info'>
             <h3>Series Cast</h3>
             <div className='people-scroller'>
-                {tvShowDetails?.credits?.cast?.map((person) => (
-                    <div key={person.id} className='cast'>
+                {movieDetails?.credits?.cast?.map((person) => (
+                    <div key={person.id}  className='cast'>
                         <img className='cast-image'
                             src={`https://media.themoviedb.org/t/p/w138_and_h175_face/${person.profile_path}`}
                             alt={person.name}
@@ -167,45 +159,16 @@ export default function Page() {
                     </div>
                 ))}
             </div>
-      </div>
-      <div className='media'>
-            <div className='media-tab'>
-                <h3>Media</h3>
-                <nav>
-                    <button className={activeTab === 'Most Popular' ? 'active' : ''} onClick={() => setActiveTab('Most Popular')}>
-                        Most Popular
-                    </button>
-                    <button className={activeTab === 'Videos' ? 'active' : ''} onClick={() => setActiveTab('Videos')}>
-                        Videos
-                    </button>
-                    <button className={activeTab === 'Backdrops' ? 'active' : ''} onClick={() => setActiveTab('Backdrops')}>
-                        Backdrops
-                    </button>
-                    <button className={activeTab === 'posters' ? 'active' : ''} onClick={() => setActiveTab('Posters')}>
-                        Posters
-                    </button>
-                </nav>
-            </div>
-            <div className='media-images'>
-                {tvShowDetails?.images?.backdrops?.slice(0, 6).map((image) => (
-                    <img
-                        key={image.file_path}
-                        src={`https://image.tmdb.org/t/p/w500/${image.file_path}`}
-                        alt={image.file_path}
-                        className='media-image'
-                    />
-                ))}
-            </div>
-      </div>
-      <div className='rec'>
+        </div>
+        <div className='rec'>
             <h3>Recommendations</h3>
             <div className='sho'>
-                {tvShowDetails?.recommendations?.results?.map((movie) => (
+                {movieDetails?.recommendations?.results?.map((movie) => (
                     <div key={movie.id} onClick={() => fetchTrailer(movie.id, movie.media_type || 'movie')} className='mendation'>
                         <div className='image-wrapper'>
                             <img
                             src={`https://image.tmdb.org/t/p/w250_and_h141_face/${movie.poster_path}`}
-                            alt={movie.name || movie.title}
+                            alt={movieDetails?.name || movieDetails?.title || ''}
                             />
                             <div className="air-date-overlay">
                                 <IoCalendarSharp /> {movie.first_air_date || movie.release_date}
@@ -218,7 +181,7 @@ export default function Page() {
                     </div>
                 ))}
             </div>
-      </div>
+        </div>
         <Modal isOpen={isModalOpen} onRequestClose={() => setIsModalOpen(false)} overlayClassName="custom-modal-overlay"
             className="custom-modal-content" >
        

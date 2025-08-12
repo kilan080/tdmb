@@ -84,8 +84,6 @@
     flex-direction: column;
     position: relative;
     z-index: 1;
-    /* align-items: center; */
-    /* text-align: center; */
 }
 
 
@@ -143,6 +141,5 @@
         color: #000000;
         font-size: 14.4px;
         font-family: "Source Sans Pro", Arial, sans-serif;
-        /* overflow: hidden; */
     }
 }

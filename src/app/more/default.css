@@ -1,0 +1,42 @@
+.mov-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(192px, 1fr));
+    gap: 24px;
+    padding: 20px 40px;
+}
+.movie-card {
+    width: 192px;
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    border: 1px solid #e3e3e3;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    position: relative;
+    z-index: 1;
+    overflow: visible;
+
+}
+.movi-image-container {
+    position: relative;
+    width: 100%;
+    height: 291px;
+    overflow: hidden    ;
+
+}
+button {
+    position: absolute;
+    right: 10;
+    top:0;
+    background: transparent;
+    cursor: pointer;
+    color: white;
+    font-size: 2rem;
+    border: none;
+    
+}
+.react-player-wrapper {
+    position: relative;
+    padding-top: 56.25%;
+    height: 0;
+}

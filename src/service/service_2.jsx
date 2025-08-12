@@ -4,14 +4,25 @@ export const config = {
    baseUrl: 'https://api.themoviedb.org',
    token: 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MjQ0YzkzNjk3MzcyYzk5ZDY5YjU5MjYyY2I2NjhkMCIsIm5iZiI6MTc1MTI5Mjg2NC42NTkwMDAyLCJzdWIiOiI2ODYyOWJjMGMwN2QyZTVjZjAzMDQ4MzQiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.ZosBHSGmiHBXFEgyml673qLAEg5JbfUXfaiCDZxvjuk',
    subUrl: {
+      // People
       popularPeople: '/3/person/popular',
-      movies: '/3/movie/popular',
-      tvshows: '/3/discover/tv',
-      tv: '/3/tv',
+
+      // Movie lists
+      popularMovies: '/3/movie/popular',
+      nowPlayingMovies: '/3/movie/now_playing',
+
+      // Movie details
+      movieDetails: '/3/movie',
+
+      // TV lists
       discoveryTv: '/3/discover/tv',
-      airingToday: '/3/tv/airing_today',
-      nowPlaying: '/3/movie/now_playing',
-   },
+      airingTodayTv: '/3/tv/airing_today',
+      popularTv: '/3/tv/popular',
+      
+
+      // TV details
+      tvDetails: '/3/tv'
+   }
 };
 
 const tmdbApi = axios.create({

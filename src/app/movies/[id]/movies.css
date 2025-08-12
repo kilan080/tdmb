@@ -3,23 +3,21 @@
     font-stretch: 100%;
     font-style: normal;
 }
-.img-back {
+.im-back {
     position: relative;
     color: #fff;
     display: flex;
     flex-direction: row;
-    /* height: 100vh; */
-    /* width: 100%; */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     padding: 20px;
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     background-image:  linear-gradient(to right, rgba(178.5, 199.5, 178.5, 1) 20%, rgba(178.5, 199.5, 178.5, 0) 50%);
 }
 
-.img-back::before {
+.im-back::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -191,18 +189,19 @@
 }
 
 .play-button {
-  background: transparent;
+  background: inherit;
   border: none;
   color: white;
   padding: 8px 16px;
   border-radius: 4px;
   font-weight: 700;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 15px;
   display: flex;
   align-items: center;
+  display: block;
   gap: 6px;
-  cursor: pointer;
+  margin-top: 5px;
 }
 .play-button:hover {
   opacity: 0.6;
@@ -379,13 +378,13 @@
     opacity: 0;
     transition: opacity 0.3s ease;
     display: inline-block;
-    /* margin-bottom: 10px; */
 
 }
 .mendation:hover .air-date-overlay {
     opacity: 1;
     display: block;
 }
+
 
 /* modal */
 
@@ -405,6 +404,7 @@
     align-items: center;
 }
 
+/* Modal content is centered and has a fixed size */
 .custom-modal-content {
     position: relative;
     background: transparent;
@@ -419,7 +419,7 @@
     z-index: 10000;
 }
 
-/* Keep 16:9 aspect ratio for player */
+
 .react-player-wrapper {
     position: relative;
     padding-top: 56.25%;
@@ -433,24 +433,25 @@
 
 /* Close button */
 .modal-close-btn {
-    position: absolute;
-    top: -35px;
-    right: -5px;
-    font-size: 1.5rem;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-    z-index: 2000;
+  position: absolute;
+  top: -35px;
+  right: -5px;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  z-index: 2000;
 }
 
 .modal-close-btn:hover {
-    color: #ff4d4d;
+  color: #ff4d4d;
 }
 
 
+
 @media screen and (max-width: 995px) {
-    .img-back {
+    .im-back {
         display: flex;
         flex-direction: column;
         align-items: flex-start;

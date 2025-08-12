@@ -13,31 +13,32 @@ export default function Page() {
    
    const [movies, setMovies] = useState([]);
 
-   useEffect(() => {
-      const fetchMovies = async () => {
-         try {
-            const res = await tmdbApi.get(`${config.subUrl.tvshows}`);
-            setMovies(res.data.results || []);
-            console.log('TV Shows:', data.results);
-         } catch (error) {
-            console.error('error fetching TV Shows', error);
-         }
-      };
-
-      fetchMovies();
-   }, []);
-
+   const fetchMovies = async () => {
+      try {
+         const res = await tmdbApi.get(config.subUrl.popularTv);
+         setMovies(res.data.results || []);
+         console.log('TV Shows:', data.results);
+      } catch (error) {
+         console.error('error fetching TV Shows', error);
+      }
+   };
+   
+   
    function getFirstParagraph(description) {
       const firstParagraph =
-         typeof description === 'string'
-            ? description.split('\n\n')[0] || ''
-            : '';
-
+      typeof description === 'string'
+      ? description.split('\n\n')[0] || ''
+      : '';
+      
       return firstParagraph.length > 100
-         ? firstParagraph.substring(0, 140) + '...'
-         : firstParagraph;
+      ? firstParagraph.substring(0, 140) + '...'
+      : firstParagraph;
    }
-
+   
+   useEffect(() => {
+      fetchMovies();
+   }, []);
+   
    console.log('popular tv shows', movies);
    return (
       <div className="maintv">

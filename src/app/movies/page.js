@@ -1,21 +1,22 @@
 'use client';
 import React, { useEffect, useState } from 'react';
+import NextLink from 'next/link';
 import tmdbApi, { config } from '@/service/service_2';
 import './movie_one.css';
 
 export default function Page() {
    const [movies, setMovies] = useState([]);
 
+   const fetchMovies = async () => {
+      try {
+         const res = await tmdbApi.get(config.subUrl.popularMovies);
+         setMovies(res.data.results || []);
+      } catch (error) {
+         console.error('Error fetching data:', error);
+      }
+   };
+   
    useEffect(() => {
-      const fetchMovies = async () => {
-         try {
-            const res = await tmdbApi.get(`${config.subUrl.movies}`);
-            setMovies(res.data.results || []);
-         } catch (error) {
-            console.error('Error fetching data:', error);
-         }
-      };
-
       fetchMovies();
    }, []);
 
@@ -62,9 +63,8 @@ export default function Page() {
                return (
                   <div className="movi-card" key={movie.id || index}>
                      <div className="movi-image-container">
-                        <a
-                           href={`https://www.themoviedb.org/movie/${movie.id}`}
-                           target="_blank"
+                        <NextLink
+                           href={`/movies/${movie.id}`}
                         >
                            <img
                               src={
@@ -79,7 +79,7 @@ export default function Page() {
                                  {Math.round(movie.vote_average * 10)}%
                               </span>
                            )}
-                        </a>
+                        </NextLink>
                      </div>
                      <div className="movi_info">
                         <p className="movi-title">
