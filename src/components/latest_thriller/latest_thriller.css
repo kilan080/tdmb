@@ -3,8 +3,9 @@
   background-color: #f9fafb;
 }
 .opera-container {
-    padding-left: 40px;
-    margin-top: 25px;
+    
+    margin: 40px auto;
+    max-width: 1300px;
 
 }
 
@@ -35,7 +36,7 @@
 
 
 .opera-movie-list::-webkit-scrollbar {
-  height: 8px;
+  display: none;
 }
 
 .opera-movie-list::-webkit-scrollbar-thumb {
@@ -126,7 +127,7 @@
 
 
 .opera-tab-btn {
-  padding: 8px 16px;
+  /* padding: 8px 16px; */
   background-color: #e0e0e0;
   border: none;
   border-radius: 20px;

@@ -7,9 +7,7 @@
   font-family: sans-serif;
   color: #333;
   background-color: #fff;
-
   flex: 0 0 auto;
-  /* width: 150px; */
   scroll-snap-align: start;
 
 }
@@ -17,7 +15,6 @@
 .poster-container {
   position: relative;
   border-radius: 8px;
-  /* overflow: hidden; */
 }
 .poster-container img {
   width: 100%;

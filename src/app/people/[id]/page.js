@@ -54,8 +54,7 @@ export default function Page() {
                     <ul> {peopleDetails.also_known_as?.map((name, idx) => (<li key={idx}>{name}</li> ))}</ul>
                        
                 </div>
-
-            </div>
+          </div>
             <div className='info'>
                 <h2><a>{peopleDetails.name}</a></h2>
                 <h3>Biography</h3>
@@ -69,8 +68,8 @@ export default function Page() {
                 <div className='known'>
                     <h3>Known For</h3>
                     <div className='known-mov'>
-                        {peopleDetails?.tv_credits?.cast?.map((show) => (
-                            <div className='known-mg' key={show.id}>
+                        {peopleDetails?.tv_credits?.cast?.map((show, index) => (
+                            <div className='known-mg' key={`${show.id}-${index}`}>
                                 <img
                                     src={`https://media.themoviedb.org/t/p/w150_and_h225_bestv2${show.poster_path}`}
                                     alt={show.name}

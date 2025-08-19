@@ -20,8 +20,10 @@
 
 
 .main-peoples {
-  width: 100%;
-  padding: 20px 30px;
+    /* width: 100%;
+    padding: 20px 30px; */
+    margin: 40px auto;
+    max-width: 1300px;
   
 }
 .people-header {

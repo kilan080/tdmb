@@ -1,9 +1,8 @@
 'use client';
-
 import React, { useEffect, useState } from 'react';
 import NextLink from 'next/link';
 import tmdbApi, { config } from '@/service/service_2';
-import axios from 'axios';
+// import axios from 'axios';
 import './tv.css';
 
 export default function Page() {
@@ -17,7 +16,7 @@ export default function Page() {
       try {
          const res = await tmdbApi.get(config.subUrl.popularTv);
          setMovies(res.data.results || []);
-         console.log('TV Shows:', data.results);
+         console.log('TV Shows:', res.data.results);
       } catch (error) {
          console.error('error fetching TV Shows', error);
       }
@@ -41,7 +40,7 @@ export default function Page() {
    
    console.log('popular tv shows', movies);
    return (
-      <div className="maintv">
+      <div className="main-tv">
          <div className="pop-tv">
             <h1 className="poptv">Popular TV Shows</h1>
          </div>
@@ -55,20 +54,20 @@ export default function Page() {
                return (
                   <div className="tv-card" key={movie.id || index}>
                      <div className="tv-image-container">
-                        <NextLink href={`/tvShows/${movie.id}`} >
-                           <img
-                              src={
-                                 imagePath
-                                    ? `https://image.tmdb.org/t/p/w500${imagePath}`
-                                    : 'https://via.placeholder.com/500x750?text=No+Image'
-                              }
-                              alt={movie.title || movie.name || 'Untitled'}
-                           />
-                           {movie.vote_average && (
-                              <span className="vot-badge-tv">
-                                 {Math.round(movie.vote_average * 10)}%
-                              </span>
-                           )}
+                        <NextLink href={`/tvShows/${movie.id}`}>
+                              <img
+                                 src={
+                                    imagePath
+                                       ? `https://image.tmdb.org/t/p/w500${imagePath}`
+                                       : 'https://via.placeholder.com/500x750?text=No+Image'
+                                 }
+                                 alt={movie.title || movie.name || 'Untitled'}
+                              />
+                              {movie.vote_average && (
+                                 <span className="vot-badge-tv">
+                                    {Math.round(movie.vote_average * 10)}%
+                                 </span>
+                              )}
                         </NextLink>
                      </div>
                      <div className="tv_info">

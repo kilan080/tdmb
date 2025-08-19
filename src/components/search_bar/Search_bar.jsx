@@ -1,14 +1,22 @@
+'use client'
 import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";   
 import './search_bar.css';
 
-const token = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MjQ0YzkzNjk3MzcyYzk5ZDY5YjU5MjYyY2I2NjhkMCIsIm5iZiI6MTc1MTI5Mjg2NC42NTkwMDAyLCJzdWIiOiI2ODYyOWJjMGMwN2QyZTVjZjAzMDQ4MzQiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.ZosBHSGmiHBXFEgyml673qLAEg5JbfUXfaiCDZxvjuk'
+const token = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MjQ0YzkzNjk3MzcyYzk5ZDY5YjU5MjYyY2I2NjhkMCIsIm5iZiI6MTc1MTI5Mjg2NC42NTkwMDAyLCJzdWIiOiI2ODYyOWJjMGMwN2QyZTVjZjAzMDQ4MzQiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.ZosBHSGmiHBXFEgyml673qLAEg5JbfUXfaiCDZxvjuk';
 
 function SearchBar() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
+  const router = useRouter();   
 
   const handleInputChange = (e) => {
     setQuery(e.target.value);
+  };
+
+  const handleSearch = () => {
+    if (!query.trim()) return;
+    router.push(`/search?query=${encodeURIComponent(query)}`);
   };
 
   useEffect(() => {
@@ -29,7 +37,6 @@ function SearchBar() {
           }
         );
         const data = await res.json();
-        console.log("Search Results:", data);
         setResults(data.results || []);
       } catch (error) {
         console.error("Search failed:", error);
@@ -45,15 +52,20 @@ function SearchBar() {
 
   return (
     <div className="search_bar">
-      <h1>Welcome.</h1>
-      <h3>Millions of movies, TV shows and people to discover. Explore now.</h3>
       <div className="search-wrapper">
-        <input
-          type="text"
-          placeholder="Search for a movie, TV show, person..."
-          value={query}
-          onChange={handleInputChange}
-        />
+        <h1>Welcome.</h1>
+        <h3>Millions of movies, TV shows and people to discover. Explore now.</h3>
+        <div className="input-container">
+          <input
+            type="text"
+            placeholder="Search for a movie, TV show, person..."
+            value={query}
+            onChange={handleInputChange}
+          />
+          <button onClick={handleSearch} className="search-btn">
+            Search
+          </button>
+        </div>
 
         {results.length > 0 && (
           <ul className="dropdown">

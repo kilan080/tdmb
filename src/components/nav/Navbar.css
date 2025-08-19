@@ -1,13 +1,22 @@
 
 .navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #032541;
-  padding: 10px 40px;
-  color: #fff;
-  position: relative;
-  height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #032541;
+    padding: 0px 40px;
+    width: 100%;
+    color: #fff;
+    position: relative;
+    height: 64px;
+    max-width: var(--maxPrimaryPageWidth);
+}
+.over-nav {
+    /* margin: 40px auto;
+    max-width: 1300px;
+    display: flex;
+    align-items: center;
+    justify-content: center; */
 }
 .navbar_left {
   display: flex;

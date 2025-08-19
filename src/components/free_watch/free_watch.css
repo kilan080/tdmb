@@ -49,7 +49,7 @@
 }
 
 .free-list::-webkit-scrollbar {
-  height: 8px;
+  display: none;
 }
 
 .free-list::-webkit-scrollbar-thumb {

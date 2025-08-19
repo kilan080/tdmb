@@ -4,6 +4,8 @@ import tmdbApi, { config } from '@/service/service_2';
 import { useParams } from 'next/navigation';
 import ReactPlayer from 'react-player';
 import Modal from 'react-modal';
+import ImageGallery from "react-image-gallery";
+import "react-image-gallery/styles/css/image-gallery.css";
 import { FaHeart } from 'react-icons/fa';
 import { IoInformationCircleOutline } from "react-icons/io5";
 import { IoIosMenu, IoIosPlay } from "react-icons/io";
@@ -18,9 +20,13 @@ export default function Page() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [activeTab, setActiveTab] = useState('Most Popular');
 
+    const [isOpen, setIsOpen] = useState(false);
+    const [startIndex, setStartIndex] = useState(0);
+
+
     const getTvShowDetails = async () => {
         try {
-            const res = await tmdbApi.get(`${config.subUrl.tvDetails}/${id}?append_to_response=credits,recommendations`);
+            const res = await tmdbApi.get(`${config.subUrl.tvDetails}/${id}?append_to_response=credits,recommendations,videos,images`);
             setTvShowDetails(res.data);
             console.log('TV Show Details:', res.data);
         } catch (error) {
@@ -62,6 +68,26 @@ export default function Page() {
         return `${hours}h ${minutes}m`;
     };
 
+    function PosterGallery({ posters }) {
+        const galleryItems = posters?.slice(0, 6).map((image) => ({
+            original: `https://image.tmdb.org/t/p/w300${image.file_path}`,
+            thumbnail: `https://image.tmdb.org/t/p/w200${image.file_path}`,
+        })) || [];
+        return (
+            <ImageGallery
+                items={galleryItems}
+                showFullscreenButton={true}
+                showPlayButton={false}
+            />
+            );
+        }
+        
+    const galleryItems =
+    tvShowDetails?.images?.posters?.slice(0, 6).map((image) => ({
+        original: `https://image.tmdb.org/t/p/w300${image.file_path}`,
+        thumbnail: `https://image.tmdb.org/t/p/w200${image.file_path}`,
+    })) || [];
+
     useEffect(() => {
         if (id) getTvShowDetails();
     }, [id]);
@@ -84,7 +110,7 @@ export default function Page() {
             <img className='tv-show-backdrop'
                 src={`https://media.themoviedb.org/t/p/w300_and_h450_bestv2${tvShowDetails.poster_path || tvShowDetails.backdrop_path}`}
                 alt={tvShowDetails.name}
-                onClick={() => fetchTrailer(tvShowDetails.id, 'tv')} // Updated to use tvShowDetails
+                onClick={() => fetchTrailer(tvShowDetails.id, 'tv')}
                 style={{ backgroundImage: tvShowDetails?.backdrop_path
                     ? `url(https://image.tmdb.org/t/p/original${tvShowDetails.backdrop_path})`
                     : 'none',}}
@@ -153,8 +179,8 @@ export default function Page() {
       <div className='series-info'>
             <h3>Series Cast</h3>
             <div className='people-scroller'>
-                {tvShowDetails?.credits?.cast?.map((person) => (
-                    <div key={person.id} className='cast'>
+                {tvShowDetails?.credits?.cast?.map((person, index) => (
+                    <div key={`${person.id}-${index}`} className='cast'>
                         <img className='cast-image'
                             src={`https://media.themoviedb.org/t/p/w138_and_h175_face/${person.profile_path}`}
                             alt={person.name}
@@ -173,28 +199,85 @@ export default function Page() {
                 <h3>Media</h3>
                 <nav>
                     <button className={activeTab === 'Most Popular' ? 'active' : ''} onClick={() => setActiveTab('Most Popular')}>
-                        Most Popular
+                        Most Popular {tvShowDetails?.images?.backdrops?.length || 0}
                     </button>
                     <button className={activeTab === 'Videos' ? 'active' : ''} onClick={() => setActiveTab('Videos')}>
-                        Videos
+                        Videos {tvShowDetails?.videos?.results?.length || 0}
                     </button>
                     <button className={activeTab === 'Backdrops' ? 'active' : ''} onClick={() => setActiveTab('Backdrops')}>
-                        Backdrops
+                        Backdrops {tvShowDetails?.images?.backdrops?.length || 0}
                     </button>
-                    <button className={activeTab === 'posters' ? 'active' : ''} onClick={() => setActiveTab('Posters')}>
-                        Posters
+                    <button className={activeTab === 'Posters' ? 'active' : ''} onClick={() => setActiveTab('Posters')}>
+                        Posters {tvShowDetails?.images?.posters?.length || 0}
                     </button>
                 </nav>
             </div>
-            <div className='media-images'>
-                {tvShowDetails?.images?.backdrops?.slice(0, 6).map((image) => (
-                    <img
-                        key={image.file_path}
-                        src={`https://image.tmdb.org/t/p/w500/${image.file_path}`}
-                        alt={image.file_path}
-                        className='media-image'
-                    />
-                ))}
+            <div className='media-content'>
+                {activeTab === 'Most Popular' && (
+                    <div className='media-images'>
+                        {tvShowDetails?.images?.backdrops?.slice(0, 6).map((image, index) => (
+                            <img 
+                                key={`${image.file_path}-${index}`}
+                                src={`https://image.tmdb.org/t/p/w500/${image.file_path}`}
+                                alt={image.file_path}
+                                className='media-image'
+                            />
+                        ))}
+                    </div>
+                )}
+                {activeTab === 'Videos' && (
+                    <div className='media-videos'>
+                        {tvShowDetails?.videos?.results?.slice(0, 6).map((video, index) => (
+                            <div key={`${video.key}-${index}`} className='video-thumb' onClick={() => fetchTrailer(tvShowDetails.id, 'tv')}>
+                                <img 
+                                    src={`https://img.youtube.com/vi/${video.key}/hqdefault.jpg`}
+                                 />
+                            </div>
+                        ))}
+                    </div>
+                )}
+                {activeTab === 'Backdrops' && (
+                    <div className='media-images'>
+                        {tvShowDetails?.images?.backdrops?.slice(0, 6).map((image, index) => (
+                           <img
+                                key={`${image.file_path}-${index}`}
+                                src={`https://image.tmdb.org/t/p/w500/${image.file_path}`}
+                                alt={image.file_path}
+                                className='media-image' 
+                            />
+                        ))}
+                    </div>
+                )}
+                {activeTab === 'Posters' && (
+                    <div className="media-images">
+                        {galleryItems.map((item, index) => (
+                        <img
+                            key={index}
+                            src={item.thumbnail}
+                            alt={`Poster ${index}`}
+                            className="media-image"
+                            onClick={() => {
+                            setStartIndex(index);
+                            setIsOpen(true);
+                            }}
+                        />
+                        ))}
+                        {isOpen && (
+                        <div className="moda-overlay" onClick={() => setIsOpen(false)}>
+                            <div className="moda-content" onClick={(e) => e.stopPropagation()}>
+                                <button className="clos-btn" onClick={() => setIsOpen(false)}>✖</button>
+                                <ImageGallery
+                                    items={galleryItems}
+                                    startIndex={startIndex}
+                                    showThumbnails={false}
+                                    showFullscreenButton={false}
+                                    showPlayButton={false}
+                                />
+                            </div>
+                        </div>
+                        )}
+                    </div>
+                    )}
             </div>
       </div>
       <div className='rec'>

@@ -1,4 +1,5 @@
 import React from "react";
+import NextLink from 'next/link';
 import "./movieCard.css";
 
     const getImageUrl = (imagePath) => {
@@ -16,7 +17,7 @@ function MovieCard({ movie }) {
   return (
     <div className="movie-card">
       <div className="poster-container">
-        <a href={`https://www.themoviedb.org/movie/${movie.id}`} target='_blank'>
+        <NextLink href={`/movies/${movie.id}`}>
           <img
             src={getImageUrl(movie.poster_path)}
             alt={movie.name || movie.title}
@@ -25,7 +26,7 @@ function MovieCard({ movie }) {
           <div className="vote-badge">
             {Math.round(movie.vote_average * 10)}%
           </div>
-        </a>
+        </NextLink>
       </div>
       <h3 className="title">{movie.name || movie.title}</h3>
       <p className="release-date">

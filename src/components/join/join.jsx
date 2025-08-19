@@ -6,6 +6,7 @@ export default function Join () {
 
   return (
     <div className='join'>
+      <div className="on-join">
         <h2 className="join-header">Join Today</h2>
         <div className="join-two">
             <p className='p-one'>Get access to maintain your own <span>custom personal lists, track what you've seen</span> and search and filter for <span> what to watch</span> next—regardless if it's in theatres, on TV or available on popular streaming services like Netflix, Amazon Prime Video, FlixOlé, Zee5, and Sun Nxt.</p>
@@ -20,9 +21,8 @@ export default function Join () {
         </div>
 
 
-        <button
-        //  onClick={goToSignUp}
-         >Sign Up</button>
+        <button>Sign Up</button>
+      </div>
     </div>
   )
 }

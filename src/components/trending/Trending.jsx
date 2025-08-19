@@ -12,27 +12,25 @@ function ToggleInputs() {
    const [loading, setLoading] = useState(false);
    const [activeTab, setActiveTab] = useState('today');
 
-   // const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 
    const fetchTodaysMovie = async () => {
       try {
-         const res = await tmdbApi.get(`${config.subUrl.discoveryTv}`);
-
-         setMoviesToday(res.data.results || []);
+         const { data } = await tmdbApi.get(config.subUrl.discoveryTv);
+         setMoviesToday(data?.results || []);
       } catch (error) {
-         console.log('errors getting todays movies', error);
+         console.log("errors getting todays movies", error);
       }
    };
 
    const fetchWeeklyMovies = async () => {
       try {
-         const res = tmdbApi.get(`${config.subUrl.airingToday}`);
-
-         setMoviesThisWeek(res.data.results || []);
+         const { data } = await tmdbApi.get(config.subUrl.airingTodayTv);
+         setMoviesThisWeek(data?.results || []);
       } catch (error) {
-         console.log('error getting weekly movies', error);
+         console.log("error getting weekly movies", error);
       }
    };
+
 
    useEffect(() => {
       fetchTodaysMovie();

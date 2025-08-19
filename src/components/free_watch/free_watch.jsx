@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import NextLink from 'next/link';
 import './free_watch.css';
 
 export default function Free() {
@@ -87,37 +88,35 @@ export default function Free() {
               item.profile_path;
 
             return (
-              <div className="free-card" key={item.id || index}>
+            <div className="free-card" key={item.id || index}>
                 <div className="movies-image-container">
-                  <a
-                    href={`https://www.themoviedb.org/${activeSide === "movies" ? "movie" : "tv"}/${item.id}`}
-                    target='_blank'
-                    rel='noreferrer'
-                  >
+                  <NextLink
+                    href={`/${activeSide === "movies" ? "movie" : "tv"}/${item.id}`}
+                    >
                     <img
                       src={
-                        imagePath
-                          ? `https://image.tmdb.org/t/p/w500${imagePath}`
-                          : "https://via.placeholder.com/500x750?text=No+Image"
+                      imagePath
+                        ? `https://image.tmdb.org/t/p/w500${imagePath}`
+                        : "https://via.placeholder.com/500x750?text=No+Image"
                       }
                       alt={item.title || item.name || "Untitled"}
                     />
                     {item.vote_average && (
                       <span className="vote-badge">
-                        {Math.round(item.vote_average * 10)}%
+                      {Math.round(item.vote_average * 10)}%
                       </span>
                     )}
-                  </a>
-                </div>
-                <div className="movies-info">
-                  <p className="movies-title">
-                    {item.title || item.name}
-                  </p>
-                  <p className="movies-subtitle">
-                    {item.release_date || item.first_air_date}
-                  </p>
-                </div>
-              </div>
+                    </NextLink>
+                  </div>
+                  <div className="movies-info">
+                    <p className="movies-title">
+                      {item.title || item.name}
+                    </p>
+                    <p className="movies-subtitle">
+                      {item.release_date || item.first_air_date}
+                    </p>
+                  </div>
+            </div>
             );
           })}
       </div>

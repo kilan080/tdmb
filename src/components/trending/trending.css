@@ -1,5 +1,8 @@
 .trends-section {
-  margin-top: 30px;
+  
+    margin: 40px auto;
+    max-width: 1300px;
+    padding: 0 20px;
 }
 
 .trends-header {
@@ -13,7 +16,7 @@
     font-size: 24px;
     font-weight: bold;
     color: black;
-    padding-left: 40px;
+    /* padding-left: 40px; */
 }
 
 .trends-tabs {
@@ -48,7 +51,7 @@
 
 .trends-movies {
   overflow-x: auto;
-  padding: 0 40px;
+  /* padding: 0 40px; */
 }
 
 .trends-movies-inner {
@@ -56,7 +59,10 @@
   gap: 16px;
   width: fit-content;
 }
-/*  */
+
+.trends-movies::-webkit-scrollbar {
+    display: none;
+}
 .video-modal {
   position: fixed;
   top: 0;

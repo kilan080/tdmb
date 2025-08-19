@@ -5,23 +5,23 @@ import tmdbApi, { config } from '@/service/service_2';
 const tabs = [
    {
       value: 'Popular',
-      path: config.subUrl.airingToday,
+      path: config.subUrl.airingTodayTv,
    },
    {
       value: 'Streaming',
-      path: config.subUrl.nowPlaying,
+      path: config.subUrl.popularMovies,
    },
    {
       value: 'On TV',
-      path: config.subUrl.trendingMovieDay,
+      path: config.subUrl.airingTodayTv,
    },
    {
       value: 'For Rent',
-      path: config.subUrl.nowPlaying,
+      path: config.subUrl.nowPlayingMovies,
    },
    {
       value: 'In Theaters',
-      path: config.subUrl.trendingMovieDay,
+      path: config.subUrl.popularMovies,
    },
 ];
 
@@ -58,7 +58,6 @@ export default function Opra() {
                   const id = item.id;
                   let videoUrl = null;
 
-                  // Correct video endpoints
                   const videoEndpoint =
                      mediaType === 'movie'
                         ? `/3/movie/${id}/videos`

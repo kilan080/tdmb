@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import './whats_popular.css';
+import NextLink from 'next/link';
 
 const tabs = [
   {
@@ -84,7 +85,7 @@ export default function Popular() {
       return (
         <div className="movie-card" key={movie.id || index}>
           <div className="movie-image-container">
-            <a href={`https://www.themoviedb.org/movie/${movie.id}`} target='_blank'>
+            <NextLink href={`/movies/${movie.id}`}>
               <img
                 src={
                   imagePath
@@ -99,7 +100,7 @@ export default function Popular() {
                   {Math.round(movie.vote_average * 10)}%
                 </span>
               )}
-            </a>
+            </NextLink>
           </div>
 
           <div className="movie-info">
