@@ -1,6 +1,7 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import NextLink from 'next/link';
+import Image from 'next/image';
 import tmdbApi, { config } from '@/service/service_2';
 // import axios from 'axios';
 import './tv.css';
@@ -12,7 +13,7 @@ export default function Page() {
    
    const [movies, setMovies] = useState([]);
 
-   const fetchMovies = async () => {
+   const fetchMovies = useCallback(async () => {
       try {
          const res = await tmdbApi.get(config.subUrl.popularTv);
          setMovies(res.data.results || []);
@@ -20,9 +21,8 @@ export default function Page() {
       } catch (error) {
          console.error('error fetching TV Shows', error);
       }
-   };
-   
-   
+   }, []);
+
    function getFirstParagraph(description) {
       const firstParagraph =
       typeof description === 'string'
@@ -36,7 +36,7 @@ export default function Page() {
    
    useEffect(() => {
       fetchMovies();
-   }, []);
+   }, [fetchMovies]);
    
    console.log('popular tv shows', movies);
    return (
@@ -55,13 +55,15 @@ export default function Page() {
                   <div className="tv-card" key={movie.id || index}>
                      <div className="tv-image-container">
                         <NextLink href={`/tvShows/${movie.id}`}>
-                              <img
+                              <Image
                                  src={
                                     imagePath
                                        ? `https://image.tmdb.org/t/p/w500${imagePath}`
                                        : 'https://via.placeholder.com/500x750?text=No+Image'
                                  }
                                  alt={movie.title || movie.name || 'Untitled'}
+                                 width={500}
+                                 height={750}
                               />
                               {movie.vote_average && (
                                  <span className="vot-badge-tv">

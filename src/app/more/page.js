@@ -1,6 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
+import Image from "next/image";
 import Modal from 'react-modal';
 import tmdbApi, { config } from '@/service/service_2';
 import './default.css';
@@ -70,7 +71,7 @@ export default function Page() {
               onClick={() => fetchTrailer(movie.id)}
             >
               <div className="movi-image-container">
-                <img
+                <Image
                   src={
                     imagePath
                       ? `https://image.tmdb.org/t/p/w500${imagePath}`

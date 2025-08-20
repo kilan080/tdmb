@@ -1,6 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import tmdbApi, { config } from '@/service/service_2';
+import Image from 'next/image';
 import NextLink from 'next/link';
 import './people.css';
 
@@ -37,13 +38,15 @@ export default function Page() {
                            href={`/people/${person.id}`}
                            rel="noopener noreferrer"
                         >
-                           <img
+                           <Image
                               src={
                                  imagePath
                                     ? `https://image.tmdb.org/t/p/w500${imagePath}`
                                     : 'https://via.placeholder.com/500x750?text=No+Image'
                               }
                               alt={person.name || 'Unnamed'}
+                              width={500}
+                              height={750}
                            />
                         </NextLink>
                      </div>

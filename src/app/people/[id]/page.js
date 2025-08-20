@@ -1,6 +1,7 @@
 'use client';
 import tmdbApi from '@/service/service_2';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import './people[id].css';
 
@@ -8,7 +9,7 @@ export default function Page() {
   const { id } = useParams();
   const [peopleDetails, setPeopleDetails] = useState(null);
 
-  const getPeopleDetails = async () => {
+  const getPeopleDetails = useCallback(async () => {
     try {
       const res = await tmdbApi.get(`/3/person/${id}?append_to_response=movie_credits,tv_credits`);
       setPeopleDetails(res.data);
@@ -16,11 +17,11 @@ export default function Page() {
     } catch (error) {
       console.error('error fetching person details:', error);
     }
-  };
+  }, [id]);
 
   useEffect(() => {
-    if (id) getPeopleDetails();
-  }, [id]);
+    getPeopleDetails();
+  }, [getPeopleDetails]);
 
   if (!peopleDetails) return <p>Loading...</p>;
 
@@ -28,9 +29,11 @@ export default function Page() {
     <div className='people-detail'>
         <div className='head-name'>
             <div className='sec'>
-                <img
-                src={`https://media.themoviedb.org/t/p/w300_and_h450_bestv2${peopleDetails.profile_path}`}
-                alt={peopleDetails.name}
+                <Image
+                  src={`https://media.themoviedb.org/t/p/w300_and_h450_bestv2${peopleDetails.profile_path}`}
+                  alt={peopleDetails.name}
+                  width={300}
+                  height={450}
                 />
                 <div className='pers-info'>
                     <h3>Personal Info</h3>
@@ -70,9 +73,11 @@ export default function Page() {
                     <div className='known-mov'>
                         {peopleDetails?.tv_credits?.cast?.map((show, index) => (
                             <div className='known-mg' key={`${show.id}-${index}`}>
-                                <img
-                                    src={`https://media.themoviedb.org/t/p/w150_and_h225_bestv2${show.poster_path}`}
-                                    alt={show.name}
+                                <Image
+                                  src={`https://media.themoviedb.org/t/p/w150_and_h225_bestv2${show.poster_path}`}
+                                  alt={show.name}
+                                  width={150}
+                                  height={225}
                                 />
                                 <p>{show.name}</p>
                             </div>

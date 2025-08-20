@@ -1,6 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import NextLink from 'next/link';
+import Image from "next/image";
 import tmdbApi, { config } from '@/service/service_2';
 import './movie_one.css';
 
@@ -66,13 +67,15 @@ export default function Page() {
                         <NextLink
                            href={`/movies/${movie.id}`}
                         >
-                           <img
+                           <Image
                               src={
                                  imagePath
                                     ? `https://image.tmdb.org/t/p/w500${imagePath}`
                                     : 'https://via.placeholder.com/500x750?text=No+Image'
                               }
                               alt={movie.title || movie.name || 'Untitled'}
+                              width={300}
+                              height={200}
                            />
                            {movie.vote_average && (
                               <span className="vot-badge">

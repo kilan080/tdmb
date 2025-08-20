@@ -1,8 +1,9 @@
 'use client'
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import tmdbApi, { config } from '@/service/service_2';
 import { useParams } from 'next/navigation';
 import ReactPlayer from 'react-player';
+import Image from 'next/image';
 import Modal from 'react-modal';
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
@@ -24,7 +25,7 @@ export default function Page() {
     const [startIndex, setStartIndex] = useState(0);
 
 
-    const getTvShowDetails = async () => {
+    const getTvShowDetails =  useCallback(async () => {
         try {
             const res = await tmdbApi.get(`${config.subUrl.tvDetails}/${id}?append_to_response=credits,recommendations,videos,images`);
             setTvShowDetails(res.data);
@@ -32,7 +33,7 @@ export default function Page() {
         } catch (error) {
         console.error('error fetching details ', error);
         }
-    }
+    }, [id]);
     const fetchTrailer = async (id, type = 'movie') => {
         try {
             const res = await tmdbApi.get(`/3/${type}/${id}/videos`);
@@ -89,8 +90,8 @@ export default function Page() {
     })) || [];
 
     useEffect(() => {
-        if (id) getTvShowDetails();
-    }, [id]);
+      getTvShowDetails();
+    }, [getTvShowDetails]);
 
     if (!tvShowDetails) return <p>Loading...</p>;
 
@@ -107,13 +108,15 @@ export default function Page() {
                 backgroundRepeat: 'no-repeat',
             }}
             >
-            <img className='tv-show-backdrop'
+            <Image className='tv-show-backdrop'
                 src={`https://media.themoviedb.org/t/p/w300_and_h450_bestv2${tvShowDetails.poster_path || tvShowDetails.backdrop_path}`}
                 alt={tvShowDetails.name}
                 onClick={() => fetchTrailer(tvShowDetails.id, 'tv')}
                 style={{ backgroundImage: tvShowDetails?.backdrop_path
                     ? `url(https://image.tmdb.org/t/p/original${tvShowDetails.backdrop_path})`
                     : 'none',}}
+                width={300}
+                height={450}
             />
             <div className='tv-show-details'>
                 <h1>{tvShowDetails.name} ({tvShowDetails.first_air_date?.slice(0, 4)})</h1>
@@ -145,7 +148,7 @@ export default function Page() {
                         </div>
                         
                         <div className='vibe'>
-                            <h5>What's your <span className='und'>vibe</span>?<IoInformationCircleOutline /></h5>
+                            <h5>What&apos;s your <span className='und'>vibe</span>? <IoInformationCircleOutline /></h5>
                         </div>
                 </div>
 
@@ -181,9 +184,11 @@ export default function Page() {
             <div className='people-scroller'>
                 {tvShowDetails?.credits?.cast?.map((person, index) => (
                     <div key={`${person.id}-${index}`} className='cast'>
-                        <img className='cast-image'
+                        <Image className='cast-image'
                             src={`https://media.themoviedb.org/t/p/w138_and_h175_face/${person.profile_path}`}
                             alt={person.name}
+                            width={138}
+                            height={175}
                         />
                         <div className='cast-epi'>
                             <p className='cast-name'>{person.name}</p>
@@ -216,11 +221,13 @@ export default function Page() {
                 {activeTab === 'Most Popular' && (
                     <div className='media-images'>
                         {tvShowDetails?.images?.backdrops?.slice(0, 6).map((image, index) => (
-                            <img 
+                            <Image
                                 key={`${image.file_path}-${index}`}
                                 src={`https://image.tmdb.org/t/p/w500/${image.file_path}`}
                                 alt={image.file_path}
                                 className='media-image'
+                                width={500}
+                                height={281}
                             />
                         ))}
                     </div>
@@ -229,9 +236,13 @@ export default function Page() {
                     <div className='media-videos'>
                         {tvShowDetails?.videos?.results?.slice(0, 6).map((video, index) => (
                             <div key={`${video.key}-${index}`} className='video-thumb' onClick={() => fetchTrailer(tvShowDetails.id, 'tv')}>
-                                <img 
+                                <Image
                                     src={`https://img.youtube.com/vi/${video.key}/hqdefault.jpg`}
-                                 />
+                                    alt={video.name}
+                                    className='media-vid'
+                                    width={500}
+                                    height={281}
+                                />
                             </div>
                         ))}
                     </div>
@@ -239,11 +250,13 @@ export default function Page() {
                 {activeTab === 'Backdrops' && (
                     <div className='media-images'>
                         {tvShowDetails?.images?.backdrops?.slice(0, 6).map((image, index) => (
-                           <img
+                           <Image
                                 key={`${image.file_path}-${index}`}
                                 src={`https://image.tmdb.org/t/p/w500/${image.file_path}`}
                                 alt={image.file_path}
                                 className='media-image' 
+                                width={500}
+                                height={281}    
                             />
                         ))}
                     </div>
@@ -251,7 +264,7 @@ export default function Page() {
                 {activeTab === 'Posters' && (
                     <div className="media-images">
                         {galleryItems.map((item, index) => (
-                        <img
+                        <Image
                             key={index}
                             src={item.thumbnail}
                             alt={`Poster ${index}`}
@@ -286,9 +299,11 @@ export default function Page() {
                 {tvShowDetails?.recommendations?.results?.map((movie) => (
                     <div key={movie.id} onClick={() => fetchTrailer(movie.id, movie.media_type || 'movie')} className='mendation'>
                         <div className='image-wrapper'>
-                            <img
-                            src={`https://image.tmdb.org/t/p/w250_and_h141_face/${movie.poster_path}`}
-                            alt={movie.name || movie.title}
+                            <Image
+                                src={`https://image.tmdb.org/t/p/w250_and_h141_face/${movie.poster_path}`}
+                                alt={movie.name || movie.title}
+                                width={250}
+                                height={141}
                             />
                             <div className="air-date-overlay">
                                 <IoCalendarSharp /> {movie.first_air_date || movie.release_date}
