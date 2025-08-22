@@ -64,9 +64,7 @@ export default function Page() {
                return (
                   <div className="movi-card" key={movie.id || index}>
                      <div className="movi-image-container">
-                        <NextLink
-                           href={`/movies/${movie.id}`}
-                        >
+                        <NextLink href={`/movies/${movie.id}`}>
                            <Image
                               src={
                                  imagePath

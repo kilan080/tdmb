@@ -111,12 +111,13 @@
   background-color: #1f2f45;
   border-radius: 20px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .all.active {
   background-color: #24cba4;
   color: #000;
+  transition: all 0.3s ease;
 }
 
 .movie-title {
@@ -134,7 +135,7 @@
 
 .popus {
     margin: 40px auto;
-    max-width: 1300px;
+    max-width: 1200px;
     
 }
 

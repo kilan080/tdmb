@@ -13,7 +13,7 @@ export const config = {
 
       // Movie details
       movieDetails: '/3/movie',
-
+      tvDetails: '/3/tv',
       // TV lists
       discoveryTv: '/3/discover/tv',
       airingTodayTv: '/3/tv/airing_today',
@@ -21,7 +21,7 @@ export const config = {
       
 
       // TV details
-      tvDetails: '/3/tv'
+      // tvDetails: '/3/tv'
    }
 };
 

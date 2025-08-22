@@ -650,6 +650,7 @@ export default function Page() {
                                         width={200}
                                         height={300}
                                         className="media-image"
+                                        onClick={handlePosterClick(index)}
                                     />
                                 ))}
                                 

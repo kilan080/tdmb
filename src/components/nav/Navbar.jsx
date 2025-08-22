@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link'
 import React, { useState } from 'react';
+import Image from 'next/image';
 import './Navbar.css';
 import { IoPersonSharp } from "react-icons/io5";
 import { FaPlus } from "react-icons/fa";
@@ -18,7 +19,7 @@ const Navbar = () => {
       <nav className="navbar">
         <div className="navbar_left">
           <Link href='/' className="logo">
-            <img className='head1' src="/movie_logo.svg" alt="Logo" />
+            <Image className='head1' src="/movie_logo.svg" alt="Logo"  width={40} height={40}/>
           </Link>
           <IoPersonSharp className='head2' />
           {/* Navigation Links */}
@@ -40,7 +41,7 @@ const Navbar = () => {
         </div>
 
 
-        <img className='middle' src='/movie-logo.svg' style={{ width: '40px' }} />
+        <Image className='middle' src='/movie-logo.svg' alt='logo' width={40} height={40} />
 
         <button
           className="navbar_toggle"

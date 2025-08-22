@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import NextLink from 'next/link';
+import Image from 'next/image';
 import './free_watch.css';
 
 export default function Free() {
@@ -91,14 +92,16 @@ export default function Free() {
             <div className="free-card" key={item.id || index}>
                 <div className="movies-image-container">
                   <NextLink
-                    href={`/${activeSide === "movies" ? "movie" : "tv"}/${item.id}`}
-                    >
-                    <img
+                    href={`${activeSide === "movies" ? "/movies" : "/tvShows"}/${item.id}`}
+                  >
+                    <Image
                       src={
                       imagePath
                         ? `https://image.tmdb.org/t/p/w500${imagePath}`
                         : "https://via.placeholder.com/500x750?text=No+Image"
                       }
+                      width={500}
+                      height={750}
                       alt={item.title || item.name || "Untitled"}
                     />
                     {item.vote_average && (

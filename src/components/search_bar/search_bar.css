@@ -1,5 +1,5 @@
 .search_bar {
-    background-image: url('/search_background.webp');
+    /* background-image: url('/search_background.webp'); */
     background-size: cover;
     background-position: center;
     width: 100%;
@@ -74,8 +74,8 @@ input {
 }
 .search-wrapper {
     position: relative;
-    margin: 40px auto;
-    max-width: 1300px;
+    margin: auto;
+    max-width: 1200px;
     
 }
 
@@ -127,7 +127,7 @@ input {
     top: 50%;
     height: 46px;
     transform: translateY(-50%);
-    background: green;
+    background: linear-gradient(to right, #90cea1 0%, #01b4e4 100%);
     border: none;
     padding: 10px 26px;
     border-radius: 30px;

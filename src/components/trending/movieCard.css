@@ -1,5 +1,6 @@
 .movie-card {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   width: 200px;
   height: auto;

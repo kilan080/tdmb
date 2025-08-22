@@ -1,7 +1,7 @@
 .trends-section {
   
     margin: 40px auto;
-    max-width: 1300px;
+    max-width: 1200px;
     padding: 0 20px;
 }
 
@@ -24,6 +24,7 @@
   border-radius: 20px;
   overflow: hidden;
   border: 1px solid #ccc;
+  transition: all 0.3s ease;
 }
 
 .trends-tab {
@@ -38,7 +39,8 @@
 
 .trends-tab.active {
   background: #032541;
-  color: #1ed5a9;;
+  color: #1ed5a9;
+  transition: all 0.3s ease;
 }
 
 .trends-tab:not(:last-child) {

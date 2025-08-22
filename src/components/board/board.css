@@ -43,7 +43,7 @@ img {
 
 .twos {
     display: flex;
-    gap: 1rem;
+    gap: 10px;
     flex-direction: column;
     align-items: center;
     flex-wrap: wrap;
@@ -98,8 +98,8 @@ img {
 }
 
 .avatar img {
-    width: 50px;
-    height: 50px;
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
     object-fit: cover;
 }
@@ -109,9 +109,9 @@ img {
 }
 
 .data h3 {
-    margin: 0 0 0.5rem;
+    /* margin: 0 0 0.5rem; */
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 0.8rem;
     color: #000;
 }
 .data h3:hover {
@@ -127,8 +127,8 @@ img {
 .meter-this-week {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    margin-top: 6px;
+    gap: 0.3rem;
+    /* margin-top: 6px; */
 }
 
 .meter-all .guage {
@@ -154,7 +154,7 @@ img {
 .meter-all h4,
 .meter-this-week h4 {
     margin: 0;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     font-weight: bold;
     color: #333;
 }

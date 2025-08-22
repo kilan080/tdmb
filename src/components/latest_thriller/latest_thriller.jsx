@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import './latest_thriller.css';
+import Image from 'next/image';
 import tmdbApi, { config } from '@/service/service_2';
 
 const tabs = [
@@ -123,6 +124,17 @@ export default function Opra() {
 
    return (
       <>
+         <div className="latest-thriler"
+            style={{
+            backgroundImage: movies[0]?.backdrop_path
+               ? `url(https://media.themoviedb.org/t/p/w1920_and_h427_multi_faces${movies[0].backdrop_path})`
+               : "none",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            // background: "overlay"
+            }}
+          >
          <div className="opera-container">
             <header className="opera-header">
                <h2 className="opera-title">Latest Trailers</h2>
@@ -152,18 +164,20 @@ export default function Opra() {
                {movies.map((movie, i) => (
                   <div className="opera-movie-card" key={movie.id || i}>
                      <div className="opera-movie-image-container">
-                        <img
+                        <Image
                            src={
                               movie.displayImage
-                                 ? `https://image.tmdb.org/t/p/w500${movie.displayImage}`
+                                 ? `https://image.tmdb.org/t/p/w300${movie.displayImage}`
                                  : 'https://via.placeholder.com/500x281?text=No+Image'
                            }
+                           width={300}
+                           height={169}
                            alt={movie.displayTitle}
-                           loading="lazy"
-                           onError={(e) => {
-                              e.target.src =
-                                 'https://via.placeholder.com/500x281?text=Image+Error';
-                           }}
+                           // loading="lazy"
+                           // onError={(e) => {
+                           //    e.target.src =
+                           //       'https://via.placeholder.com/500x281?text=Image+Error';
+                           // }}
                         />
                         <div
                            className="opera-play-icon"
@@ -178,29 +192,19 @@ export default function Opra() {
                         >
                            ▶
                         </div>
-                        {movie.videoUrl && (
+                        {/* {movie.videoUrl && (
                            <div className="opera-has-trailer-indicator">🎬</div>
-                        )}
+                        )} */}
                      </div>
-                     <div className="opera-movie-info">
+                     {/* <div className="opera-movie-info"> */}
                         <p className="opera-movie-title">
                            {movie.displayTitle}
                         </p>
-                        <p className="opera-movie-subtitle">
-                           {movie.overview
-                              ? `${movie.overview.slice(0, 80)}${
-                                   movie.overview.length > 80 ? '...' : ''
-                                }`
-                              : 'No description available'}
-                        </p>
-                        {/* <p className="opera-movie-type">
-                           {movie.mediaType === 'movie'
-                              ? '🎬 Movie'
-                              : '📺 TV Show'}
-                        </p> */}
-                     </div>
+                        <p className='dae'>{movie.releaseDate}</p>
+                     {/* </div> */}
                   </div>
                ))}
+            </div>
             </div>
          </div>
 

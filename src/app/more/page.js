@@ -77,6 +77,8 @@ export default function Page() {
                       ? `https://image.tmdb.org/t/p/w500${imagePath}`
                       : 'https://via.placeholder.com/500x750?text=No+Image'
                   }
+                  width={500}
+                  height={750}
                   alt={movie.title || movie.name || 'Untitled'}
                 />
               </div>
@@ -93,7 +95,7 @@ export default function Page() {
             zIndex: 1000,
           },
           content: {
-            background: 'transparent',
+            // backgroundCol: 'transparent',
             border: 'none',
             width: '80%',
             maxWidth: '900px',

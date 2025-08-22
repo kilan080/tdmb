@@ -7,37 +7,37 @@ import './trending.css';
 
 function ToggleInputs() {
    const [activeSide, setActiveSide] = useState('today');
-   const [moviesThisWeek, setMoviesThisWeek] = useState([]);
-   const [moviesToday, setMoviesToday] = useState([]);
+   const [tvThisWeek, setTvThisWeek] = useState([]);
+   const [tvToday, setTvToday] = useState([]);
    const [loading, setLoading] = useState(false);
    const [activeTab, setActiveTab] = useState('today');
 
 
-   const fetchTodaysMovie = async () => {
+   const fetchTodaysTv = async () => {
       try {
          const { data } = await tmdbApi.get(config.subUrl.discoveryTv);
-         setMoviesToday(data?.results || []);
+         setTvToday(data?.results || []);
       } catch (error) {
-         console.log("errors getting todays movies", error);
+         console.log("errors getting todays tv shows", error);
       }
    };
 
-   const fetchWeeklyMovies = async () => {
+   const fetchWeeklyTv = async () => {
       try {
          const { data } = await tmdbApi.get(config.subUrl.airingTodayTv);
-         setMoviesThisWeek(data?.results || []);
+         setTvThisWeek(data?.results || []);
       } catch (error) {
-         console.log("error getting weekly movies", error);
+         console.log("error getting weekly tv shows", error);
       }
    };
 
 
    useEffect(() => {
-      fetchTodaysMovie();
-      fetchWeeklyMovies();
-   }, []);
+      fetchTodaysTv();
+      fetchWeeklyTv();
+   }, [fetchTodaysTv, fetchWeeklyTv]);
 
-   console.log('movie today', moviesToday);
+   console.log('tv today', tvToday);
 
    return (
       <div className="trends-section">
@@ -69,8 +69,8 @@ function ToggleInputs() {
             {!loading && activeSide === 'today' && (
                <div className="trends-movies">
                   <div className="trends-movies-inner">
-                     {moviesToday.map((movie) => (
-                        <MovieCard key={movie.id} movie={movie} />
+                     {tvToday.map((tv) => (
+                        <MovieCard key={tv.id} tv={tv} />
                      ))}
                   </div>
                </div>
@@ -79,8 +79,8 @@ function ToggleInputs() {
             {!loading && activeSide === 'thisWeek' && (
                <div className="trends-movies">
                   <div className="trends-movies-inner">
-                     {moviesThisWeek.map((movie) => (
-                        <MovieCard key={movie.id} movie={movie} />
+                     {tvThisWeek.map((tv) => (
+                        <MovieCard key={tv.id} tv={tv} />
                      ))}
                   </div>
                </div>

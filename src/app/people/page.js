@@ -12,7 +12,7 @@ export default function Page() {
       try {
          const res = await tmdbApi.get(`${config.subUrl.popularPeople}`);
          setPeople(res.data.results || []);
-         console.log('popular people:', data.results);
+         console.log('popular people:', res.data.results);
       } catch (error) {
          console.error('error fetching people:', error);
       }

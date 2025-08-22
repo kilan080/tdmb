@@ -1,11 +1,13 @@
+.latest-thriler {
+  height: 325px;
+}
 .opera-latest-section {
   padding: 40px;
-  background-color: #f9fafb;
+  /* background-color: #f9fafb; */
 }
 .opera-container {
-    
     margin: 40px auto;
-    max-width: 1300px;
+    max-width: 1200px;
 
 }
 
@@ -117,23 +119,29 @@
 }
 
 .opera-title {
-  font-size: 28px;
-  color: #0d1b2a;
+  font-size: 24px;
+  color: #fff;
   margin: 0;
   font-weight: 700;
   white-space: nowrap;
+  margin-left: 20px;
 }
-
+.dae {
+    font-size: 1em;
+    font-weight: 400;
+    color: #000;
+    /* margin-bottom: 15px; */
+}
 
 
 .opera-tab-btn {
   /* padding: 8px 16px; */
-  background-color: #e0e0e0;
+  background-color: inherit;
   border: none;
   border-radius: 20px;
   cursor: pointer;
   font-weight: 500;
-  color: #333;
+  color: #fff;
   transition: all 0.3s ease;
 }
 
@@ -144,12 +152,13 @@
   overflow-x: auto;
   gap: 25px;
   padding: 0 16px;
+  /* background: inherit; */
 }
 
 .opera-movie-card {
   min-width: 284px;
   max-width: 283px;
-  background-color: #0d1b2a;
+  background: inherit;
   border-radius: 12px;
   overflow: hidden;
   position: relative;
@@ -179,23 +188,28 @@
 }
 
 .opera-movie-info {
-  background-color: #0d1b2a;
+  background-color: inherit;
   padding: 12px;
-  color: white;
+  color: #000000;
 }
 
 .opera-movie-title {
   font-size: 16px;
   font-weight: 600;
-  color: white;
-  margin-bottom: 6px;
+  color: #fff;
+  margin-top: 15px;
+  text-align: center;
 }
 
 .opera-movie-subtitle {
   font-size: 14px;
   color: #ccc;
 }
-
+@media (max-width: 900px) {
+  .opera-title {
+    font-size: 20px;
+  }
+}
 
 @media (max-width: 600px) {
   .opera-container {
