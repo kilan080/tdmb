@@ -65,4 +65,8 @@ span {
     button {
         justify-content: center;
     }
+    button {
+        margin-top: 6px;
+        margin-bottom: 15px;
+    }
 }

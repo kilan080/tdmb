@@ -709,4 +709,7 @@ nav {
         background-position: top;
         
     }
+    .cast {
+        height: 285px;
+    }
 }

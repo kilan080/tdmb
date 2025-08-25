@@ -121,6 +121,7 @@
     .tv-list {
         display: flex;
         flex-direction: column;
+        padding: 0 20px;
     }
     .tv-card {
         display: flex;
@@ -139,6 +140,9 @@
         height: 141px;
         width: 100%;
     }
+    .poptv {
+        padding: 0 20px;
+    }
     .tv-detail {
         display: flex;
         flex-wrap: wrap;
@@ -148,5 +152,16 @@
         font-size: 14.4px;
         font-family: "Source Sans Pro", Arial, sans-serif;
         /* overflow: hidden; */
+    }
+}
+@media screen and (max-width: 500px) {
+    .poptv {
+        padding: 0 10px;
+    }
+    .tv-list {
+        padding: 0 10px;
+    }
+    .main-tv {
+        padding: 0 20px;
     }
 }

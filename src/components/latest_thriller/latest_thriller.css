@@ -218,9 +218,10 @@
   }
 
   .opera-header {
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
     gap: 10px;
+    align-items: center;
   }
 
   .opera-tabs {
@@ -276,5 +277,70 @@
   .opera-movie-list {
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
+  }
+}
+
+/* Hide dropdown on desktop */
+.mobile-tabs { display: none; }
+
+/* Hide normal tabs on mobile */
+@media (max-width: 600px) {
+  .desktop-tabs {
+     display: none; 
+  }
+  .mobile-tabs {
+     display: block;
+      width: 50%; 
+    
+    }
+
+  .opera-dropdown-toggle {
+    background: linear-gradient(
+     to right,
+    #1ed5a9 0%,
+    #01b4a7 100%);
+    color: #fff;
+    border: none;
+    align-items: center;
+    display: flex;
+    gap: 5px;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-weight: 500;
+    cursor: pointer;
+    width: fit-content;
+    margin-top: 10px;
+  }
+
+  .opera-dropdown-menu {
+    margin-top: 8px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .opera-dropdown-item {
+    border: none;
+    background: #fff;
+    text-align: left;
+    font-weight: 500;
+    cursor: pointer;
+    color: #000;
+  }
+
+  .opera-dropdown-item:hover {
+    background: #f2f2f2;
+  }
+
+  .opera-active {
+    background: linear-gradient(
+    to right,
+    #1ed5a9 0%,
+    #01b4a7 100%
+);
+    color: #fff !important;
   }
 }

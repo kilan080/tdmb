@@ -208,6 +208,130 @@
   font-size: 12px;
 }
 
+/* carousel  */
+
+.movie-carousel {
+  overflow: hidden;
+  position: relative;
+  margin-top: 20px;
+}
+
+.movie-list-carousel {
+  display: flex;
+  transition: transform 0.8s ease-in-out;
+  /* This will use your existing .movie-list styles */
+}
+
+/* Make sure your existing movie-card styles work in the carousel */
+.movie-list-carousel .movie-card {
+  flex: 0 0 16.666%; /* 6 items visible by default */
+  /* Keep all your existing movie-card styling */
+}
+
+/* Responsive design */
+@media (max-width: 1280px) {
+  .movie-list-carousel .movie-card {
+    flex: 0 0 20%; /* 5 items */
+  }
+}
+
+@media (max-width: 1024px) {
+  .movie-list-carousel .movie-card {
+    flex: 0 0 25%; /* 4 items */
+  }
+}
+
+@media (max-width: 768px) {
+  .movie-list-carousel .movie-card {
+    flex: 0 0 33.333%; /* 3 items */
+  }
+}
+
+@media (max-width: 640px) {
+  .movie-list-carousel .movie-card {
+    flex: 0 0 50%; /* 2 items */
+  }
+}
+
+/* Optional: Pause animation on hover */
+.movie-carousel:hover .movie-list-carousel {
+  transition-duration: 2s;
+}
+
+
+/*  */
+/* Dropdown styles (mobile only) */
+.tab-dropdown {
+  position: relative;
+  display: none;
+  margin-top: 15px;
+  margin-left: 20px;
+}
+
+.dropdown-toggle {
+  padding: 8px 16px;
+  border: none;
+  background-color: #1f2f45;
+  color: linear-gradient(
+  to right,
+  #1ed5a9 0%,
+  #01b4a7 100%);
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 50px;
+}
+
+.dropdown-toggle .arrow {
+  transition: transform 0.3s ease;
+  font-size: 15px;
+  margin-top: 5px;
+}
+
+.dropdown-toggle .arrow.open {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 6px 0;
+  z-index: 10;
+  min-width: 140px;
+}
+
+.dropdown-item {
+    padding: 6px 12px;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+}
+
+.dropdown-item.active {
+    background: #24cba4;
+    color: #000;
+}
+
+/* Show dropdown instead of full tabs on small screens */
+@media screen and (max-width: 600px) {
+  .tab-btn {
+    display: none;
+  }
+  .tab-dropdown {
+    display: block; 
+  }
+}
+/*  */
+
 @media screen and (max-width: 600px) {
   .hmm {
     font-size: 18px;
@@ -216,7 +340,7 @@
 
   }
   .popular-header {
-    padding-left: 0px;
+    padding-left: 10px;
     gap: 30px;
   }
   .tab-btn {
@@ -226,8 +350,8 @@
 @media screen and (max-width: 415px) {
     .popular-header {
       display: flex;
-      flex-direction: column;
-      gap: 0;
+      flex-direction: row;
+      gap: 20px;
     }
     .hmm {
       margin-top: 20px;

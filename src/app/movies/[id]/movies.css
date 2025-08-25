@@ -291,7 +291,7 @@
     padding-bottom: 10px;
     border-radius: var(--imageBorderRadius);
     overflow: hidden;
-    height: 330px;
+    /* height: 330px; */
     width: 129px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
@@ -749,6 +749,9 @@ nav {
         background-size: contain;
         background-position: top;
         
+    }
+    .cast {
+        height: 285px;
     }
 
 }

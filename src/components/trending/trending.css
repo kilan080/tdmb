@@ -7,9 +7,10 @@
 
 .trends-header {
   display: flex;
-  gap: 20px;
+  gap: 2px;
   align-items: center;
   margin-bottom: 16px;
+  position: relative;
 }
 
 .trends-title {
@@ -95,9 +96,57 @@
   cursor: pointer;
   line-height: 1;
 }
-@media screen and (max-width: 768px) {
-  .trends-tabs {
+
+/*  */
+
+/* Hide/show desktop vs mobile */
+.desktop-only { display: flex; }
+.mobile-only { display: none; }
+
+@media screen and (max-width: 600px) {
+  .desktop-only { display: none; }
+  .mobile-only { 
+    display: block;
+    position: relative;
+   }
+  
+  .dropdown-toggle {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 14px;
+    background: #032541;
+    color: #1ed5a9;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    width: 130px; /* short dropdown */
+    cursor: pointer;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-top: 6px;
+    z-index: 10;
+    width: 130px;
+  }
+
+  .dropdown-item {
+    padding: 8px 12px;
+    background: white;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    color: #333;
+  }
+
+  .dropdown-item.active,
+  .dropdown-item:hover {
+    background: #032541;
+    color: #1ed5a9;
   }
 }

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import './latest_thriller.css';
 import Image from 'next/image';
+import { FaAngleDown } from "react-icons/fa6";
 import tmdbApi, { config } from '@/service/service_2';
 
 const tabs = [
@@ -31,6 +32,7 @@ export default function Opra() {
    const [activeTab, setActiveTab] = useState(tabs[0].value);
    const [movies, setMovies] = useState([]);
    const [loading, setLoading] = useState(false);
+   const [dropdownOpen, setDropdownOpen] = useState(false);
    const [selectedVideoUrl, setSelectedVideoUrl] = useState(null);
 
    const handleSetPathname = (value, newPath) => {
@@ -135,24 +137,54 @@ export default function Opra() {
             // background: "overlay"
             }}
           >
-         <div className="opera-container">
-            <header className="opera-header">
-               <h2 className="opera-title">Latest Trailers</h2>
-               <nav className="opera-tabs">
-                  {tabs.map((tab) => (
-                     <button
+            <div className="opera-container">
+               <header className="opera-header">
+                  <h2 className="opera-title">Latest Trailers</h2>
+
+                  {/* Desktop Tabs */}
+                  <nav className="opera-tabs desktop-tabs">
+                     {tabs.map((tab) => (
+                        <button
                         key={tab.value}
                         className={`opera-tab-btn ${
                            activeTab === tab.value ? 'opera-active' : ''
                         }`}
                         onClick={() => handleSetPathname(tab.value, tab.path)}
                         disabled={loading}
-                     >
+                        >
                         {tab.value}
+                        </button>
+                     ))}
+                  </nav>
+
+                  {/* Mobile Dropdown */}
+                  <div className="opera-dropdown mobile-tabs">
+                     <button
+                        className="opera-dropdown-toggle"
+                        onClick={() => setDropdownOpen((prev) => !prev)}
+                     >
+                        {activeTab} <FaAngleDown />
                      </button>
-                  ))}
-               </nav>
-            </header>
+                     {dropdownOpen && (
+                        <div className="opera-dropdown-menu">
+                        {tabs.map((tab) => (
+                           <button
+                              key={tab.value}
+                              className={`opera-dropdown-item ${
+                              activeTab === tab.value ? 'opera-active' : ''
+                              }`}
+                              onClick={() => {
+                              handleSetPathname(tab.value, tab.path);
+                              setDropdownOpen(false); // close after selecting
+                              }}
+                           >
+                              {tab.value}
+                           </button>
+                        ))}
+                        </div>
+                     )}
+                  </div>
+               </header>
 
             {loading && <p className="opera-loading">Loading trailers...</p>}
 

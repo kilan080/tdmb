@@ -7,7 +7,7 @@
     max-width: 1200px;
 }
 .pop-header {
-    padding: 30px 40px;
+    padding: 0px 20px;
 }
 
 .pop {
@@ -23,7 +23,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(192px, 1fr));
     gap: 24px;
-    padding: 20px 40px;
+    padding: 20px 20px;
 }
 
 
@@ -83,7 +83,7 @@
 
 
 .movi_info {
-    padding: 12px;
+    padding: 15 12px;
     display: flex;
     flex-direction: column;
     position: relative;

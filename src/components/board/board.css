@@ -172,3 +172,10 @@ img {
         margin: 0;
     }
 }
+@media screen and (max-width: 600px) {
+    .leaderboard{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }   
+}

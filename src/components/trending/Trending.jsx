@@ -1,8 +1,7 @@
-import React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import MovieCard from './movieCard';
 import tmdbApi, { config } from '@/service/service_2';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 import './trending.css';
 
 function ToggleInputs() {
@@ -10,8 +9,7 @@ function ToggleInputs() {
    const [tvThisWeek, setTvThisWeek] = useState([]);
    const [tvToday, setTvToday] = useState([]);
    const [loading, setLoading] = useState(false);
-   const [activeTab, setActiveTab] = useState('today');
-
+   const [dropdownOpen, setDropdownOpen] = useState(false);
 
    const fetchTodaysTv = async () => {
       try {
@@ -31,35 +29,64 @@ function ToggleInputs() {
       }
    };
 
-
    useEffect(() => {
       fetchTodaysTv();
       fetchWeeklyTv();
-   }, [fetchTodaysTv, fetchWeeklyTv]);
-
-   console.log('tv today', tvToday);
+   }, []);
 
    return (
       <div className="trends-section">
          <div className="trends-header">
             <h2 className="trends-title">Trending</h2>
-            <div className="trends-tabs">
+
+            {/* Desktop Tabs */}
+            <div className="trends-tabs desktop-only">
                <button
-                  className={`trends-tab ${
-                     activeSide === 'today' ? 'active' : ''
-                  }`}
+                  className={`trends-tab ${activeSide === 'today' ? 'active' : ''}`}
                   onClick={() => setActiveSide('today')}
                >
                   Today
                </button>
                <button
-                  className={`trends-tab ${
-                     activeSide === 'thisWeek' ? 'active' : ''
-                  }`}
+                  className={`trends-tab ${activeSide === 'thisWeek' ? 'active' : ''}`}
                   onClick={() => setActiveSide('thisWeek')}
                >
                   This Week
                </button>
+            </div>
+
+            {/* Mobile Dropdown */}
+            <div className="trends-tabs-mobile mobile-only">
+               <button
+                  className="dropdown-toggle"
+                  onClick={() => setDropdownOpen(!dropdownOpen)}
+               >
+                  {activeSide === 'today' ? 'Today' : 'This Week'}
+                  {dropdownOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+               </button>
+
+               {dropdownOpen && (
+                  <div className="dropdown-menu">
+                     <button
+                        className={`dropdown-item ${activeSide === 'today' ? 'active' : ''}`}
+                        onClick={() => {
+                           setActiveSide('today');
+                           setDropdownOpen(false);
+                        }}
+                     >
+                        Today
+                     </button>
+                     <button
+                        className={`dropdown-item ${activeSide === 'thisWeek' ? 'active' : ''}`}
+                        onClick={() => {
+                           setActiveSide('thisWeek');
+                           setDropdownOpen(false);
+                        }}
+                     >
+                        This Week
+                     </button>
+                  </div>
+               )}
             </div>
          </div>
 

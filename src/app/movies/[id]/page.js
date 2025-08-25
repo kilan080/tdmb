@@ -340,8 +340,6 @@ import { FaHeart } from "react-icons/fa";
 import { CiPlay1 } from "react-icons/ci";
 import './movies.css';
 
-// Dynamically import ReactPlayer to avoid SSR issues
-
 
 // Only set this if Modal hasn't been initialized yet
 if (typeof window !== 'undefined' && Modal.setAppElement) {
