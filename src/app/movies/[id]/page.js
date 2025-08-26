@@ -494,7 +494,7 @@ export default function Page() {
                             </div>
                             
                             <div className='vibe'>
-                                <h5>What&apos;s your <span className='und'>vibe</span>? <IoInformationCircleOutline /></h5>
+                                <h5>What&apos;s your <span className='und'>vibe</span>? <IoInformationCircleOutline className='con'/></h5>
                             </div>
                         </div>
 

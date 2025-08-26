@@ -662,7 +662,7 @@ nav {
     .menu-love-mark {
         
         position: fixed;
-        bottom: 0;
+        bottom: -19px;
         left: 0;
         width: 100%;
         background-color: #032541cc;
@@ -693,8 +693,8 @@ nav {
     .tv-show-details h1 {
         font-size: 24px;
     }
-    .rec {
-        
+    .con {
+        display: none;
     }
 }
 
