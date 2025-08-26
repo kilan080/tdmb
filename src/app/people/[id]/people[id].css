@@ -57,6 +57,7 @@
     line-height: 22px;
     margin-bottom: 10px;
     overflow-wrap: break-word;
+    padding: 20px;
 }
 
 
@@ -139,8 +140,8 @@ ul li {
     }
     .sec {
         display: flex;
-        /* flex-direction: row; */
-        gap: 30px;
+        padding: 20px;
+        gap: 20px;
     }
 
     .info {
@@ -155,6 +156,16 @@ ul li {
 
     .known-mg img {
         width: 120px;
+    }
+}
+@media screen and (max-width: 500px) {
+    .info p {
+        padding: 20px;
+    }
+    .known-mov {
+        padding: 0 20px;
+        overflow-x: auto;
+        
     }
 }
 

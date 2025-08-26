@@ -693,6 +693,9 @@ nav {
     .tv-show-details h1 {
         font-size: 24px;
     }
+    .rec {
+        
+    }
 }
 
 @media screen and (max-width: 425px)  {

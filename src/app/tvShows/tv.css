@@ -157,6 +157,7 @@
 @media screen and (max-width: 500px) {
     .poptv {
         padding: 0 10px;
+        margin-bottom: 15px;
     }
     .tv-list {
         padding: 0 10px;

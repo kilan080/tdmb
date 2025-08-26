@@ -69,30 +69,32 @@ function SearchResults() {
     <div className="both-container">
       <div className="search-tabs">
         <h3>Search Results for &quot;{query}&quot;</h3>
-        <button 
-          className={activeTab === 'tv' ? 'active' : ''}
-          onClick={() => setActiveTab('tv')}
-        >
-          TV Shows ({results.tv.length})
-        </button>
-        <button 
-          className={activeTab === 'movies' ? 'active' : ''}
-          onClick={() => setActiveTab('movies')}
-        >
-          Movies ({results.movies.length})
-        </button>
-        <button 
-          className={activeTab === 'people' ? 'active' : ''}
-          onClick={() => setActiveTab('people')}
-        >
-          People ({results.people.length})
-        </button>
-        <button 
-          className={activeTab === 'keywords' ? 'active' : ''}
-          onClick={() => setActiveTab('keywords')}
-        >
-          Keywords ({results.keywords.length})
-        </button>
+        <div className='all-btns'>
+          <button 
+            className={activeTab === 'tv' ? 'active' : ''}
+            onClick={() => setActiveTab('tv')}
+          >
+            TV  ({results.tv.length})
+          </button>
+          <button 
+            className={activeTab === 'movies' ? 'active' : ''}
+            onClick={() => setActiveTab('movies')}
+          >
+            Movies ({results.movies.length})
+          </button>
+          <button 
+            className={activeTab === 'people' ? 'active' : ''}
+            onClick={() => setActiveTab('people')}
+          >
+            People ({results.people.length})
+          </button>
+          <button 
+            className={activeTab === 'keywords' ? 'active' : ''}
+            onClick={() => setActiveTab('keywords')}
+          >
+            Keywords ({results.keywords.length})
+          </button>
+        </div>
       </div>
 
       <div className="search-results">
@@ -112,7 +114,7 @@ function SearchResults() {
               <div className='tails'>
                 <h2>{item.name}</h2>
                 <p className='air'>{item.first_air_date}</p>    
-                <p>
+                <p className='overrview'>
                   {item.overview && item.overview.length > 200
                     ? item.overview.slice(0, 200) + "..."
                     : item.overview}
@@ -138,7 +140,7 @@ function SearchResults() {
               <div className='tails'>
                 <h2>{item?.title}</h2>
                 <p className='air'>{item.release_date}</p>    
-                <p>
+                <p className='overrview'>
                   {item.overview && item.overview.length > 200
                     ? item.overview.slice(0, 200) + "..."
                     : item.overview}

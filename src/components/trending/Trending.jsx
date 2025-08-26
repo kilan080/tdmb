@@ -51,7 +51,7 @@ function ToggleInputs() {
                   className={`trends-tab ${activeSide === 'thisWeek' ? 'active' : ''}`}
                   onClick={() => setActiveSide('thisWeek')}
                >
-                  This Week
+                Week
                </button>
             </div>
 
@@ -83,7 +83,7 @@ function ToggleInputs() {
                            setDropdownOpen(false);
                         }}
                      >
-                        This Week
+                        Week
                      </button>
                   </div>
                )}

@@ -83,7 +83,7 @@
 
 
 .movi_info {
-    padding: 15 12px;
+    padding: 15px 12px;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -107,13 +107,26 @@
     font-family: "Source Sans Pro", Arial, sans-serif;
 
 }
-
-
 .movi-date {
     font-size: 13px;
     color: rgba(0, 0, 0, 0.6);
     margin: 0;
 }
+
+.movi-detail {
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* show 3 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 600px) {
+  .movi-detail {
+    -webkit-line-clamp: 2; /* only 2 lines on small screens */
+  }
+}
+
+
 
 @media screen and (max-width: 958px) {
     .movi-list {
