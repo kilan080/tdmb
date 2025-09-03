@@ -35,7 +35,7 @@ const Navbar = () => {
               <Link href="">API</Link>
               <Link href="">Support</Link>
               <Link href="">About</Link>
-              <Link href="">Login</Link>
+              <Link href="/login" onClick={() => setIsOpen(false)}>Login</Link>
             </div>
           </div>
         </div>
@@ -54,7 +54,7 @@ const Navbar = () => {
         <div className="others">
           <Link href=""><FaPlus /></Link>
           <Link className='en' href="">EN</Link>
-          <Link href="">Login</Link>
+          <Link href="/login" onClick={() => setIsOpen(false)}>Login</Link>
           <Link href="">Join TMDB</Link>
           <Link className='glas' href=""><FaSearch style={{ color: 'blue' }} /></Link>
         </div>

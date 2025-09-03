@@ -1,5 +1,4 @@
 .search_bar {
-    /* background-image: url('/search_background.webp'); */
     background-size: cover;
     background-position: center;
     width: 100%;
@@ -115,7 +114,7 @@ input {
 
 .input-container input {
     width: 100%;
-    padding: 10px 40px 10px 12px; /* leave space for the button */
+    padding: 10px 40px 10px 12px;
     border: 1px solid #ccc;
     border-radius: 13px;
     font-size: 16px;
@@ -139,9 +138,7 @@ input {
     margin-right: -15px;
 }
 
-.search-btn:hover {
-  background: #2563eb;
-}
+
 
 
 @media screen and (max-width: 768px) {
@@ -161,9 +158,6 @@ input {
         font-weight: 600;
         margin: 0;
     }
-    /* .input-container input::placeholder {
-        opacity: 0;
-    } */
     .input-container input::placeholder {
         content: "Search...";
     }

@@ -123,6 +123,7 @@
     width: 130px; /* short dropdown */
     cursor: pointer;
   }
+  
 
   .dropdown-menu {
     position: absolute;

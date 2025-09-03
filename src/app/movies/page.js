@@ -21,23 +21,6 @@ export default function Page() {
       fetchMovies();
    }, []);
 
-   // function useScreenWidth() {
-   //   const [width, setWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
-
-   //   useEffect(() => {
-   //     const handleResize = () => setWidth(window.innerWidth);
-   //     window.addEventListener('resize', handleResize);
-   //     return () => window.removeEventListener('resize', handleResize);
-   //   }, []);
-
-   //   return width;
-   // }
-
-   // const screenWidth = useScreenWidth();
-
-   // const overviewLength = screenWidth < 768 ? 100 : 300;
-   // const shortOverview = movies.overview?.slice(0, overviewLength);
-
    function getFirstParagraph(description) {
       const firstParagraph =
          typeof description === 'string'

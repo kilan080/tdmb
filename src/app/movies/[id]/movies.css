@@ -395,6 +395,7 @@ nav {
     object-fit: cover;
     scroll-behavior: smooth;
     overflow-x: auto;
+    cursor: pointer;
 }
 .media-images::-webkit-scrollbar {
     display: none; 
@@ -408,6 +409,7 @@ nav {
     flex-direction: row;
     overflow: hidden;
     overflow-x: auto;
+    cursor: pointer;
 }
 .media-videos::-webkit-scrollbar {
     display: none; 
@@ -445,6 +447,7 @@ nav {
     display: flex;
     flex-direction: column;
     margin: 40px auto;
+    cursor: pointer;
 }
 .rec h3 {
     margin: 0 0 20px;
