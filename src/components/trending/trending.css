@@ -7,7 +7,7 @@
 
 .trends-header {
   display: flex;
-  gap: 2px;
+  gap: 8px;
   align-items: center;
   margin-bottom: 16px;
   position: relative;
@@ -106,8 +106,9 @@
 @media screen and (max-width: 600px) {
   .desktop-only { display: none; }
   .mobile-only { 
-    display: block;
-    position: relative;
+      display: block;
+      position: relative;
+      margin-left: -35px;
    }
   
   .dropdown-toggle {
@@ -120,7 +121,7 @@
     border: none;
     border-radius: 8px;
     font-weight: 600;
-    width: 130px; /* short dropdown */
+    width: 130px;
     cursor: pointer;
   }
   

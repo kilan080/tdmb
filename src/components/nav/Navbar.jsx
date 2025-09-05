@@ -13,6 +13,9 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+  const handleLinkClick = () => {
+    setIsOpen(false);
+  }
 
   return (
     <div className='over-nav'>
@@ -24,10 +27,10 @@ const Navbar = () => {
           <IoPersonSharp className='head2' />
           {/* Navigation Links */}
           <div className={`navbar_links ${!isOpen ? "" : "open"}`}>
-            <Link href="/movies">Movies</Link>
-            <Link href="/tvShows">TV Shows</Link>
-            <Link href="/people">People</Link>
-            <Link href="/more">More</Link>
+            <Link onClick={handleLinkClick} href="/movies">Movies</Link>
+            <Link onClick={handleLinkClick} href="/tvShows">TV Shows</Link>
+            <Link onClick={handleLinkClick} href="/people">People</Link>
+            <Link onClick={handleLinkClick} href="/more">More</Link>
             <div className="links-2">
               <Link href="">Contribution Bible</Link>
               <Link href="">Discussions</Link>

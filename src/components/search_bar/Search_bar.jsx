@@ -1,6 +1,6 @@
 
+'use client';
 
-'use client'
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import './search_bar.css';
@@ -13,7 +13,7 @@ function SearchBar() {
   const [backdrop, setBackdrop] = useState(null);
   const router = useRouter();
 
-  // Handle input
+  // Handle input 
   const handleInputChange = (e) => setQuery(e.target.value);
 
   const handleSearch = () => {
@@ -22,7 +22,7 @@ function SearchBar() {
   };
 
   // Fetch background (random trending item)
-  useEffect(() => {
+  
     const fetchBackdrop = async () => {
       try {
         const res = await fetch(
@@ -43,9 +43,9 @@ function SearchBar() {
         console.error("Failed to fetch backdrop:", error);
       }
     };
-
-    fetchBackdrop();
-  }, []);
+    useEffect(() => {
+      fetchBackdrop();
+    }, []);
 
   // Fetch search results (debounced)
   useEffect(() => {

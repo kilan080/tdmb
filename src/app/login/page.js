@@ -1,21 +1,48 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './login.css';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-hot-toast';
 import { auth } from '../../../firebase/firebase';
-import { GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword } from 'firebase/auth';
+import {
+  GoogleAuthProvider,
+  signInWithRedirect,
+  getRedirectResult,
+  signInWithEmailAndPassword,
+  setPersistence,
+  browserLocalPersistence,
+} from 'firebase/auth';
 
 export default function Page() {
+  const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const router = useRouter();
-  const [error, setError] = useState(null);
+
+  // Make sure auth persists
+  useEffect(() => {
+    setPersistence(auth, browserLocalPersistence).catch(() => {});
+  }, []);
+
+  // Handle redirect result ONLY for Google login
+  useEffect(() => {
+    getRedirectResult(auth)
+      .then((result) => {
+        if (result?.user) {
+          toast.success('Logged in with Google');
+          router.replace('/'); 
+        }
+      })
+      .catch((err) => {
+        if (err?.message) {
+          console.error('Google redirect error:', err.message);
+          toast.error(err.message);
+        }
+      });
+  }, [router]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setError(null);
 
     if (!email || !password) {
       toast.error('Please fill in both email and password');
@@ -23,65 +50,64 @@ export default function Page() {
     }
 
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      console.log("✅ Login successful", userCredential.user);
+      const { user } = await signInWithEmailAndPassword(auth, email, password);
+      console.log('Email login:', user?.uid);
       toast.success('Successfully logged in');
-      router.push('/');
+      router.replace('/');
     } catch (err) {
-      console.error("❌ Login failed:", err.message);
-      setError(err.message);
-      toast.error(err.message);
+      console.error('Email login failed:', err.message);
+      toast.error(err.message || 'Login failed');
     }
   };
 
   const handleGoogleLogin = async () => {
     const provider = new GoogleAuthProvider();
+    provider.setCustomParameters({ prompt: 'select_account' });
     try {
-      const result = await signInWithPopup(auth, provider);
-      console.log("✅ Google login successful:", result.user);
-      toast.success('Successfully logged in with Google');
-      router.push('/'); // redirect to home
+      await signInWithRedirect(auth, provider);
     } catch (err) {
-      console.error("❌ Google login failed:", err.message);
-      setError(err.message);
-      toast.error(err.message);
+      console.error('Google login failed:', err.message);
+      toast.error(err.message || 'Google login failed');
     }
   };
 
   return (
-    <div className='login-container'>
-      <h2 className='login-title'>Login to your account</h2>
+    <div className="login-container">
+      <h2 className="login-title">Login to your account</h2>
 
-      <div className='form-container'>
-        <div className='form-group'>
-          <label htmlFor='email' className='form-label'>Email</label>
+      <div className="form-container">
+        <div className="form-group">
+          <label className="form-label">Email</label>
           <input
-            className='form-input'
-            type='email'
-            name='email'
-            placeholder='Enter your email'
+            className="form-input"
+            type="email"
+            placeholder="Enter your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            autoComplete="email"
           />
         </div>
 
-        <div className='form-group'>
-          <label htmlFor='password' className='form-label'>Password</label>
+        <div className="form-group">
+          <label className="form-label">Password</label>
           <input
-            className='form-input'
-            type='password'
-            id='password'
-            name='password'
-            placeholder='Enter your password'
+            className="form-input"
+            type="password"
+            placeholder="Enter your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            autoComplete="current-password"
           />
         </div>
 
-        <button type='button' className='login-button' onClick={handleLogin}>
+        <button type="button" className="login-button" onClick={handleLogin}>
           Login
         </button>
-        <button type='button' className='login-button google' onClick={handleGoogleLogin}>
+        <button
+          type="button"
+          className="login-button google"
+          onClick={handleGoogleLogin}
+        >
           Login with Google
         </button>
       </div>

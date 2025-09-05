@@ -1,5 +1,6 @@
 import React from "react";
 import NextLink from 'next/link';
+import Image from "next/image";
 import "./movieCard.css";
 
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
@@ -14,10 +15,12 @@ function TvCard({ tv }) {
     <div className="movie-card">
       <div className="poster-container">
         <NextLink href={`/tvShows/${tv.id}`}>
-          <img
+          <Image
             src={getImageUrl(tv.poster_path)}
             alt={tv.name}
             className="poster"
+            width={165}
+            height={248}
           />
           <div className="vote-badge">
             {Math.round(tv.vote_average * 10)}%
