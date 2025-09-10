@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import './login.css';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-hot-toast';
-import { auth } from '../../../firebase/firebase';
+import { analytics, auth, logEvent } from '../../../firebase/firebase';
 import {
   GoogleAuthProvider,
   signInWithRedirect,
@@ -30,6 +30,7 @@ export default function Page() {
       .then((result) => {
         if (result?.user) {
           toast.success('Logged in with Google');
+          logEvent(analytics, 'login', { method: 'google'});
           router.replace('/'); 
         }
       })
@@ -54,10 +55,11 @@ export default function Page() {
       console.log('Email login:', user?.uid);
       toast.success('Successfully logged in');
       router.replace('/');
+      logEvent(analytics, 'login', { method: 'email_password'});
     } catch (err) {
       console.error('Email login failed:', err.message);
       toast.error(err.message || 'Login failed');
-    }
+    } 
   };
 
   const handleGoogleLogin = async () => {
