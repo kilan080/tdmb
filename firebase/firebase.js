@@ -17,10 +17,10 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// ✅ Auth works everywhere
+//  Auth works everywhere
 export const auth = getAuth(app);
 
-// ✅ Analytics only in browser
+// Analytics only in browser
 let analytics;
 if (typeof window !== "undefined") {
   analytics = getAnalytics(app);

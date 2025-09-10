@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
+    domains: ['image.tmdb.org', 'via.placeholder.com', 'media.themoviedb.org'], // Added img.youtube.com for YouTube thumbnails
     remotePatterns: [
       {
         protocol: 'https',
@@ -10,7 +11,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'media.themoviedb.org', // Added: You're also using this hostname
+        hostname: 'via.placeholder.com',
         port: '',
         pathname: '/t/p/**',
       },
