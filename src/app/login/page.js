@@ -11,8 +11,10 @@ import {
   getRedirectResult,
   signInWithEmailAndPassword,
   setPersistence,
-  browserLocalPersistence,
+  browserSessionPersistence,
 } from 'firebase/auth';
+import { signInWithPopup } from 'firebase/auth';
+import { googleProvider } from '../../../firebase/firebase';
 
 export default function Page() {
   const router = useRouter();
@@ -21,7 +23,7 @@ export default function Page() {
 
   // Make sure auth persists
   useEffect(() => {
-    setPersistence(auth, browserLocalPersistence).catch(() => {});
+    setPersistence(auth, browserSessionPersistence).catch(() => {});
   }, []);
 
   // Handle redirect result ONLY for Google login
@@ -31,7 +33,7 @@ export default function Page() {
         if (result?.user) {
           toast.success('Logged in with Google');
           logEvent(analytics, 'login', { method: 'google'});
-          router.replace('/'); 
+          router.push('/'); 
         }
       })
       .catch((err) => {
@@ -54,7 +56,8 @@ export default function Page() {
       const { user } = await signInWithEmailAndPassword(auth, email, password);
       console.log('Email login:', user?.uid);
       toast.success('Successfully logged in');
-      router.replace('/');
+      console.log('Redirecting to home...');  
+      router.push('/');
       logEvent(analytics, 'login', { method: 'email_password'});
     } catch (err) {
       console.error('Email login failed:', err.message);
@@ -63,15 +66,31 @@ export default function Page() {
   };
 
   const handleGoogleLogin = async () => {
+    console.log('i am here1')
     const provider = new GoogleAuthProvider();
-    provider.setCustomParameters({ prompt: 'select_account' });
+    console.log('i am here2')
+    // provider.setCustomParameters({ prompt: 'select_account' });
     try {
+      console.log('i am here 3')
       await signInWithRedirect(auth, provider);
+      router.push('/');
     } catch (err) {
       console.error('Google login failed:', err.message);
       toast.error(err.message || 'Google login failed');
     }
   };
+  const handleRoute = async () => {
+    try {
+      await signInWithPopup(auth, googleProvider);
+      toast.success('Successfully logged in with Google');
+      router.push('/');
+      logEvent(analytics, 'login', { method: 'google_popup' });
+    } catch (err) {
+      console.error('Google login failed:', err.message);
+      toast.error(err.message || 'Google login failed');
+    }
+   
+  }
 
   return (
     <div className="login-container">
@@ -111,6 +130,13 @@ export default function Page() {
           onClick={handleGoogleLogin}
         >
           Login with Google
+        </button>
+         <button
+          type="button"
+          className="login-button google"
+          onClick={handleRoute}
+        >
+          Login with 
         </button>
       </div>
     </div>
