@@ -6,14 +6,13 @@ import { useRouter } from 'next/navigation';
 import { toast } from 'react-hot-toast';
 import { analytics, auth, logEvent } from '../../../firebase/firebase';
 import {
-  GoogleAuthProvider,
   signInWithRedirect,
   getRedirectResult,
   signInWithEmailAndPassword,
   setPersistence,
   browserSessionPersistence,
 } from 'firebase/auth';
-import { signInWithPopup } from 'firebase/auth';
+import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { googleProvider } from '../../../firebase/firebase';
 
 export default function Page() {
@@ -68,10 +67,8 @@ export default function Page() {
   const handleGoogleLogin = async () => {
     console.log('i am here1')
     const provider = new GoogleAuthProvider();
-    console.log('i am here2')
     // provider.setCustomParameters({ prompt: 'select_account' });
     try {
-      console.log('i am here 3')
       await signInWithRedirect(auth, provider);
       router.push('/');
     } catch (err) {
@@ -81,7 +78,10 @@ export default function Page() {
   };
   const handleRoute = async () => {
     try {
-      await signInWithPopup(auth, googleProvider);
+      const provider = new GoogleAuthProvider();
+      const result = await signInWithPopup(auth, provider);
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      console.log(credential, 'credential');
       toast.success('Successfully logged in with Google');
       router.push('/');
       logEvent(analytics, 'login', { method: 'google_popup' });
@@ -131,7 +131,7 @@ export default function Page() {
         >
           Login with Google
         </button>
-         <button
+        <button
           type="button"
           className="login-button google"
           onClick={handleRoute}
