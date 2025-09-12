@@ -252,7 +252,9 @@
   }
 
   .opera-movie-image-container img {
-    height: 100px;
+    height: 150px;
+    width: 300px;
+
   }
 
   .opera-play-icon {

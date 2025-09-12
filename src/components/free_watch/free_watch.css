@@ -25,6 +25,9 @@
   padding: 4px;
   transition: all 0.3s ease;
 }
+.free-tabs button {
+  margin-bottom: 5px;
+}
 
 .free-tabs button {
   border: none;

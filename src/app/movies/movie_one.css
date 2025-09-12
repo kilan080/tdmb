@@ -113,12 +113,14 @@
     margin: 0;
 }
 
-.movi-detail {
+/* .movi-detail {
   display: -webkit-box;
-  -webkit-line-clamp: 3; /* show 3 lines */
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-}
+  margin-top: 5px;
+  color: #000000; 
+} */
 
 @media screen and (max-width: 600px) {
   .movi-detail {

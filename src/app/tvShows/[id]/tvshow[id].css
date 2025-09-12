@@ -645,7 +645,7 @@ nav {
         background: #0000001A;
         border-left: none;
         border-right: none;
-        padding: 0;
+        padding: 7px 0px;
     }
     .vibe {
         background-color: inherit;
