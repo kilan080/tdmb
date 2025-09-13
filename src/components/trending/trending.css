@@ -38,14 +38,19 @@
   transition: all 0.3s ease;
 }
 
+
 .trends-tab.active {
   background: #032541;
   color: #1ed5a9;
   transition: all 0.3s ease;
+  border-radius: 20px;
+  border-right: none;
 }
 
 .trends-tab:not(:last-child) {
   border-right: 1px solid #ccc;
+  /* border-left: none; */
+  
 }
 
 .trends-content {
@@ -127,14 +132,15 @@
   }
   
 
-  .dropdown-menu {
+  .dropdown-menu-trending {
     position: absolute;
-    background: white;
-    border: 1px solid #ccc;
+    background: #13faeb;
+    border: 1px solid rgba(var(--tmdbLightGreen), 1);
     border-radius: 8px;
-    margin-top: 6px;
+    left: 51px;
     z-index: 10;
-    width: 130px;
+    width: 125px;
+    top: 74%;
   }
 
   .dropdown-item {

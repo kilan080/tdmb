@@ -66,7 +66,7 @@ function ToggleInputs() {
                </button>
 
                {dropdownOpen && (
-                  <div className="dropdown-menu">
+                  <div className="dropdown-menu-trending">
                      <button
                         className={`dropdown-item ${activeSide === 'today' ? 'active' : ''}`}
                         onClick={() => {

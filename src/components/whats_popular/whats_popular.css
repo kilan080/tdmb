@@ -296,18 +296,19 @@
 
 .dropdown-menu {
   position: absolute;
-  top: 110%;
-  left: 0;
-  background: white;
+  top: 88%;
+  left: 51px;
+  background: #13faeb;
   border: 1px solid #ccc;
   border-radius: 10px;
-  padding: 6px 0;
+  /* padding: 6px 0; */
   z-index: 10;
-  min-width: 140px;
+  min-width: 104px;
+  border: 1px solid rgba(var(--tmdbLightGreen), 1);
 }
 
 .dropdown-item {
-    padding: 6px 12px;
+    /* padding: 6px 12px; */
     width: 100%;
     text-align: left;
     background: none;
@@ -317,7 +318,7 @@
 }
 
 .dropdown-item.active {
-    background: #24cba4;
+    background: #1f245a;
     color: #000;
 }
 

@@ -88,8 +88,6 @@
     flex-direction: column;
     position: relative;
     z-index: 1;
-    /* align-items: center; */
-    /* text-align: center; */
 }
 
 
@@ -155,6 +153,9 @@
     }
 }
 @media screen and (max-width: 500px) {
+    .tv-detail {
+    -webkit-line-clamp: 2; /* only 2 lines on small screens */
+  }
     .poptv {
         padding: 0 10px;
         margin-bottom: 15px;
