@@ -28,7 +28,7 @@ export default function Page() {
             : '';
 
       return firstParagraph.length > 100
-         ? firstParagraph.substring(0, 140) + '...'
+         ? firstParagraph.substring(0, 100) + '...'
          : firstParagraph;
    }
 
