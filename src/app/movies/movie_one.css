@@ -151,6 +151,7 @@
     .movi_info {
         height: 141px;
         width: 100%;
+        padding: 7px 12px 12px;
     }
     .movi-detail {
         display: flex;

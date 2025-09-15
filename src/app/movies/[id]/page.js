@@ -680,7 +680,7 @@ export default function Page() {
                             {movieDetails.recommendations.results.slice(0, 10).map((movie) => (
                                 <div 
                                     key={movie.id} 
-                                    onClick={() => handleRecommendationClick(movie)} 
+                                    onClick={() => fetchTrailer(movie.id, movie.media_type || 'movie')} 
                                     className='mendation'
                                     style={{ cursor: 'pointer' }}
                                 >

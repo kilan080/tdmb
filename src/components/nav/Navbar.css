@@ -10,13 +10,13 @@
     position: relative;
     height: 64px;
     max-width: var(--maxPrimaryPageWidth);
-}
-.over-nav {
-    /* margin: 40px auto;
-    max-width: 1300px;
-    display: flex;
-    align-items: center;
-    justify-content: center; */
+  }
+  .over-nav {
+  /* margin: 40px auto;  */
+    /* max-width: 100%; */
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center;  */
 }
 .navbar_left {
   display: flex;

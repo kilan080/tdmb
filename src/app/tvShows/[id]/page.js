@@ -227,7 +227,7 @@ export default function Page() {
                                 alt={image.file_path}
                                 className='media-image'
                                 width={500}
-                                height={281}
+                                height={141}
                             />
                         ))}
                     </div>

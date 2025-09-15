@@ -46,13 +46,12 @@ const Navbar = () => {
     setIsOpen(false);
   }
 
-  // Show loading state while checking auth
+  // loading state to show while checking auth
   if (loading) {
     return (
       <div className='over-nav'>
         <nav className="navbar">
-          {/* Your existing navbar structure but with loading indicator */}
-          <div>Loading...</div>
+          {/* <div>Loading...</div> */}
         </nav>
       </div>
     );
