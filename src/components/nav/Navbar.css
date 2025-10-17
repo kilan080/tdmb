@@ -2,7 +2,7 @@
 .navbar {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     background: #032541;
     padding: 0px 40px;
     width: 100%;
@@ -10,6 +10,7 @@
     position: relative;
     height: 64px;
     max-width: var(--maxPrimaryPageWidth);
+    
   }
   .over-nav {
   /* margin: 40px auto;  */

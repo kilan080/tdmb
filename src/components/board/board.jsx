@@ -15,13 +15,13 @@ export default function Board() {
         <ol className="leaderboard">
             <li>
                 <span className="avatar">
-                    <a href="/u/rqphqel">
+                    <a>
                         <img src="img-9.webp" alt="" />
                     </a>
                 </span>
                 <div className="data">
                     <h3>
-                        <a href="/u/rqphqel">rqphqel</a>
+                        <a>rqphqel</a>
                     </h3>
                     <div className="meter-all">
                         <div className="guage" style={{ width: '6.537%' }}></div>
@@ -36,13 +36,13 @@ export default function Board() {
 
             <li>
                 <span className="avatar">
-                    <a href="/u/vaugouin">
+                    <a>
                         <img src="two.webp" alt="" />
                     </a>
                 </span>
                 <div className="data">
                     <h3>
-                        <a href="/u/vaugouin">Vaugouin</a>
+                        <a>Vaugouin</a>
                     </h3>
                     <div className="meter-all">
                         <div className="guage" style={{ width: '11.047%' }}></div>
@@ -57,13 +57,13 @@ export default function Board() {
 
             <li>
                 <span className="avatar">
-                    <a href="/u/Romika">
+                    <a>
                         <img src="roman.webp" alt="" />
                     </a>
                 </span>
                 <div className="data">
                     <h3>
-                        <a href="/u/Romika">Roman</a>
+                        <a>Roman</a>
                     </h3>
                     <div className="meter-all">
                         <div className="guage" style={{ width: '5.574%' }}></div>
@@ -78,13 +78,13 @@ export default function Board() {
 
             <li>
                 <span className="avatar">
-                    <a href="/u/enterpr1se">
+                    <a>
                         <img src="img-4.jpeg" alt="" />
                     </a>
                 </span>
                 <div className="data">
                     <h3>
-                        <a href="/u/enterpr1se">enterpr1se</a>
+                        <a>enterpr1se</a>
                     </h3>
                     <div className="meter-all">
                         <div className="guage" style={{ width: '12.329%' }}></div>
@@ -99,13 +99,13 @@ export default function Board() {
 
             <li>
                 <span className="avatar">
-                    <a href="/u/Sheigutn">
+                    <a>
                         <img src="img-5.webp" alt="" />
                     </a>
                 </span>
                 <div className="data">
                     <h3>
-                        <a href="/u/Sheigutn">shei</a>
+                        <a>shei</a>
                     </h3>
                     <div className="meter-all">
                         <div className="guage" style={{ width: '12.329%' }}></div>
@@ -120,13 +120,13 @@ export default function Board() {
 
             <li>
                 <span className="avatar">
-                    <a href="/u/rodrigort">
+                    <a>
                         <img src="img-6.webp" alt="" />
                     </a>
                 </span>
                 <div className="data">
                     <h3>
-                        <a href="/u/rodrigort">Rodrigo</a>
+                        <a>Rodrigo</a>
                     </h3>
                     <div className="meter-all">
                         <div className="guage" style={{ width: '0.212%' }}></div>
@@ -141,13 +141,13 @@ export default function Board() {
 
             <li>
                 <span className="avatar">
-                    <a href="/u/Samara">
+                    <a>
                         <img src="img-4.jpeg" alt="" />
                     </a>
                 </span>
                 <div className="data">
                     <h3>
-                        <a href="/u/Samara">Samara</a>
+                        <a>Samara</a>
                     </h3>
                     <div className="meter-all">
                         <div className="guage" style={{ width: '100%' }}></div>
@@ -162,13 +162,13 @@ export default function Board() {
 
             <li>
                 <span className="avatar">
-                    <a href="/u/MrCraftCod">
+                    <a>
                         <img src="img-5.webp" alt="" />
                     </a>
                 </span>
                 <div className="data">
                     <h3>
-                        <a href="/u/MrCraftCod">Rakambda</a>
+                        <a>Rakambda</a>
                     </h3>
                     <div className="meter-all">
                         <div className="guage" style={{ width: '0.139%' }}></div>
@@ -183,13 +183,13 @@ export default function Board() {
 
             <li>
                 <span className="avatar">
-                    <a href="/u/HeelerCattle86">
+                    <a>
                         <img src="img-9.webp" alt="" />
                     </a>
                 </span>
                 <div className="data">
                     <h3>
-                        <a href="/u/HeelerCattle86">HeelerCattle86</a>
+                        <a>HeelerCattle86</a>
                     </h3>
                     <div className="meter-all">
                         <div className="guage" style={{ width: '4.507%' }}></div>
@@ -204,13 +204,13 @@ export default function Board() {
 
             <li>
                 <span className="avatar">
-                    <a href="/u/JoyitaPatra1999">
+                    <a>
                         <img src="two.webp" alt="" />
                     </a>
                 </span>
                 <div className="data">
                     <h3>
-                        <a href="/u/JoyitaPatra1999">JoyitaPatra1999</a>
+                        <a>JoyitaPatra1999</a>
                     </h3>
                     <div className="meter-all">
                         <div className="guage" style={{ width: '0.341%' }}></div>

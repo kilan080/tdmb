@@ -472,13 +472,15 @@ nav {
     width: 300px;
     height: auto;
     position: relative;
-    padding-left: ;
+    /* padding-left: ; */
 }
 .mendation img {
     width: 250px;
     height: 141px;
     border-radius: 8px;
     cursor: pointer;
+    object-fit: cover;
+    /* max-width: 100%; */
 
 }
 .rec-1 {
@@ -674,7 +676,7 @@ nav {
         gap: 30px;
     }
     .under-details {
-        height: 70px;
+        /* height: 75px; */
         width: 100%;
         color: #000000;
         font-size: 16px;
@@ -685,7 +687,7 @@ nav {
         background: #0000001A;
         border-left: none;
         border-right: none;
-        padding: 0;
+        padding: 10px;
     }
     .vibe {
         background-color: inherit;
